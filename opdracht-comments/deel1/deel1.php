@@ -28,6 +28,5 @@
         	<?= $voornaam ?>
         	<?= $naam ?>
         </p>
-        <script src="js/main.js"></script>
     </body>
 </html>
