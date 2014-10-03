@@ -6,6 +6,6 @@ body{
 h1{
 	margin-top:70px;
 }
-h5{
+h5,pre{
 	color: blue;
 }
