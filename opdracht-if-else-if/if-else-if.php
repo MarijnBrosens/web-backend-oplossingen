@@ -48,7 +48,7 @@ $omgekeerdeText	=	strrev($text);
 </head>
 <body>
 
-	<h1>String extra functies deel1</h1>
+	<h1>Opdracht if-else-if</h1>
 	<pre>
 $getal		= 	79;
 $minGetal 	= 	0;

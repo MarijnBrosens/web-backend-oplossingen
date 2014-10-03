@@ -34,7 +34,7 @@ if ($getal == 7) {
 </head>
 <body>
 
-	<h1>String extra functies deel1</h1>
+	<h1>Opdracht if-conditions</h1>
 	<pre>
 
 $getal 	= 	3;

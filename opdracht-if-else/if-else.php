@@ -19,7 +19,7 @@ if ($jaartal % 4 ==0 && $jaartal % 100 !=0 || $jaartal % 400 ==0) {
 </head>
 <body>
 
-	<h1>String extra functies deel1</h1>
+	<h1>Opdracht if-else</h1>
 	<pre>
 $jaartal		= 	2000;
 $schrikkeljaar	= 	'niets ingevuld';

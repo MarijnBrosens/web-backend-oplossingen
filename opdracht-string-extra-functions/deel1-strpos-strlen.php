@@ -28,12 +28,12 @@
 <body>
 
 	<h1>String extra functies deel1</h1>
-	<h5>strlen($fruit1);</h5>
+	<pre>strlen($fruit1);</pre>
 	<p>Aantal karakters in
 		<?= $fruit1 ?>: 
 		<?= $aantalKarakters ?>
 	</p>
-	<h5>strpos($fruit1 ,$letter1);</h5>
+	<pre>strpos($fruit1 ,$letter1);</pre>
 	<p>Positie van eerste letter 
 		<?= $letter1 ?>
 		in
@@ -44,14 +44,14 @@
 
 
 	<h1>String extra functies deel2</h1>
-	<h5>strrpos($fruit2, $letter2);</h5>
+	<pre>strrpos($fruit2, $letter2);</pre>
 	<p>Laatste positie van
 		<?= $letter2 ?>
 		in
 		<?= $fruit2 ?>:
 		<?= $positionLaatsteLetter ?>
 	</p>
-	<h5>strtoupper($fruit2);</h5>
+	<pre>strtoupper($fruit2);</pre>
 	<p>
 		<?= $fruit2 ?>
 		in hoofdletters:
@@ -59,7 +59,7 @@
 	</p>
 
 	<h1>String extra functies deel3</h1>
-	<h5>str_replace($lettertje, $cijfertje, $langsteWoord);</h5>
+	<pre>str_replace($lettertje, $cijfertje, $langsteWoord);</pre>
 
 	<p>Vervang
 		<?= $lettertje ?>
