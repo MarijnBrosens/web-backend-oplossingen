@@ -20,7 +20,7 @@
 	$alleGetallen	=	implode( ' , ', $getallen );
 	$alleGetallen2	=	implode( ' , ', $getallen2 );
 
-	$maxTafels		=	11;
+	$maxTafels		=	101;
 	$maxProduct		=	10;
 
 /*-------------------------------------------------*/
