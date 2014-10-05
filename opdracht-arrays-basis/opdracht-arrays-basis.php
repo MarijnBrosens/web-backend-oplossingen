@@ -50,13 +50,9 @@ $voertuigen = array(
 	'landvoertuigen' => array('auto', 'vespa','fiets' ),
 	'watervoertuigen'=> array('boot', 'jetski'),
 	'luchtvoertuigen'=> array('vliegtuig', 'helicopter','droid')
-	);
+);
 
 var_dump($voertuigen);
 	</pre>
-	<p>
-	</p>
-	<p>
-	</p>
 </body>
 </html>
