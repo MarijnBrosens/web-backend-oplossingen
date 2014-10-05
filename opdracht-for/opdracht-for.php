@@ -7,7 +7,7 @@
 
 	$getal = 0;
 
-	while ( $getal <= $aantalGetallen )
+	for ( $getal ; $getal <= $aantalGetallen;  $getal++)
 	{
 		$getallen[$getal]	=	$getal;
 		
@@ -15,12 +15,10 @@
 		{
 			$getallen2[$getal]	=	$getal;
 		}
-		$getal++;
 	}
 
 	$alleGetallen	=	implode( ' , ', $getallen );
 	$alleGetallen2	=	implode( ' , ', $getallen2 );
-
 
 	$maxTafels		=	11;
 	$maxProduct		=	10;
@@ -36,7 +34,7 @@
 </head>
 <body>
 
-	<h1>Opdracht while</h1>
+	<h1>Opdracht for</h1>
 
 	<pre>
 $getallen		=	array();
@@ -46,20 +44,18 @@ $aantalGetallen	=	100;
 
 $getal = 0;
 
-while ( $getal <= $aantalGetallen )
+for ( $getal ; $getal <= $aantalGetallen;  $getal++)
 {
 	$getallen[$getal]	=	$getal;
 	
 	if ( $getal % 3 == 0 && $getal > 40 && $getal < 80 )
 	{
-		$getallen2[$getal]	=	$getal;
+		$getallen2[]	=	$getal;
 	}
-	$getal++;
 }
 
 $alleGetallen	=	implode( ' , ', $getallen );
 $alleGetallen2	=	implode( ' , ', $getallen2 );
-
 
 $maxTafels		=	11;
 $maxProduct		=	10;
@@ -77,21 +73,18 @@ $maxProduct		=	10;
 			<?php 
 				$tafel 		= 	0;
 			?>
-			<?php while( $tafel < $maxTafels ):  ?>
-				
+			<?php for ($tafel=0; $tafel < $maxTafels ; $tafel++) { ?>
 				<tr>
 					<?php 
 						$product = 	0;
 					?>
-					<?php while( $product <= $maxProduct ):  ?>
-
+					<?php for ($product=0; $product <= $maxProduct ; $product++) { ?>
 						<td class="<?= ( ( $tafel * $product ) % 2 > 0 ) ? '' : 'oneven' ?>"><?= $tafel * $product ?></td>
-						<?php $product++ ?>
-					<?php endwhile ?>
+					<?php } ?>
 				</tr>
 
-				<?php $tafel++ ?>
-			<?php endwhile ?>
+			<?php } ?>
+
 		</table>
 </body>
 </html>
