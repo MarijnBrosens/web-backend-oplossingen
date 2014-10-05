@@ -1,15 +1,22 @@
 <?php
-	
-	$dieren 		=	array('hond','kat','haai','slang','schildpad','paard','koe','ezel','varken');	
-	$aantaldieren	= 	count($dieren);
-	$teZoekenDier	=	'hond';
-	$resultaatZoekOpdracht	= 'vul iets in';
 
-	if (in_array($teZoekenDier, $dieren) ) {
-		$resultaatZoekOpdracht 	=	'jep, gevonden';
-	}else{
-		$resultaatZoekOpdracht	=	'niet gevonden';
+	$getallen		=	array();
+	$aantalGetallen	=	100;
+
+	$getal = 0;
+
+	while ( $getal <= $aantalGetallen )
+	{
+		$getallen[$getal]	=	$getal;
+		$getal++;
 	}
+
+	$alleGetallen	=	implode( ' , ', $getallen );
+
+	$maxTafels		=	11;
+	$maxProduct		=	10;
+
+/*-------------------------------------------------*/
 
 ?>
 
@@ -20,27 +27,52 @@
 </head>
 <body>
 
-	<h1>Opdracht switch</h1>
-	<pre>
-$dieren 		=	array('hond','kat','haai','slang','schildpad','paard','koe','ezel','varken');	
-$aantaldieren	= 	count($dieren);
-$teZoekenDier	=	'hond';
-$resultaatZoekOpdracht	= 'vul iets in';
+	<h1>Opdracht while</h1>
 
-if (in_array($teZoekenDier, $dieren) ) {
-	$resultaatZoekOpdracht 	=	'jep, gevonden';
-}else{
-	$resultaatZoekOpdracht	=	'niet gevonden';
+	<pre>
+
+$getallen		=	array();
+$aantalGetallen	=	100;
+
+$getal = 0;
+
+while ( $getal <= $aantalGetallen )
+{
+	$getallen[$getal]	=	$getal;
+	$getal++;
 }
+
+$alleGetallen	=	implode( ' , ', $getallen );
+
+$maxTafels		=	11;
+$maxProduct		=	10;
+	
 	</pre>
+
+	<h1>Deel1</h1>
 	<p>
-		Aantal dieren in '$dieren' = <?= $aantaldieren ?>
+		Alle getallen: <?= $alleGetallen ?>
 	</p>
-	<p>
-		Te zoeken dier = <?= $teZoekenDier ?>
-	</p>
-	<p>
-		<?= $resultaatZoekOpdracht ?>
-	</p>
+	<h1>Deel2</h1>
+		<table>
+			<?php 
+				$tafel 		= 	0;
+			?>
+			<?php while( $tafel < $maxTafels ):  ?>
+				
+				<tr>
+					<?php 
+						$product = 	0;
+					?>
+					<?php while( $product <= $maxProduct ):  ?>
+
+						<td class="<?= ( ( $tafel * $product ) % 2 > 0 ) ? '' : 'oneven' ?>"><?= $tafel * $product ?></td>
+						<?php $product++ ?>
+					<?php endwhile ?>
+				</tr>
+
+				<?php $tafel++ ?>
+			<?php endwhile ?>
+		</table>
 </body>
 </html>

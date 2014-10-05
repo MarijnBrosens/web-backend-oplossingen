@@ -31,7 +31,7 @@
 </head>
 <body>
 
-	<h1>Opdracht switch</h1>
+	<h1>Opdracht array basis</h1>
 	<pre>
 $dieren 	=	array('hond','kat','haai','slang','schildpad','paard','koe','ezel','spin','varken');
 

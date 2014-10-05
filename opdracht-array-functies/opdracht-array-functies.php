@@ -20,7 +20,7 @@
 </head>
 <body>
 
-	<h1>Opdracht switch</h1>
+	<h1>Opdracht array functies</h1>
 	<pre>
 $dieren 		=	array('hond','kat','haai','slang','schildpad','paard','koe','ezel','varken');	
 $aantaldieren	= 	count($dieren);
