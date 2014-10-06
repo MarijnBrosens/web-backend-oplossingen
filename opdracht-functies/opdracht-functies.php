@@ -59,9 +59,17 @@ function isEven($getal){
 	}
 }
 
+function lengthAndUppercase($string){	
+	$resultaat['upper'] 	= strtoupper($string);
+	$resultaat['length'] 	= strlen($string);
+	return $resultaat;
+}
+
 $som				=	berekensom(5,2);
 $vermenigvuldiging	=	vermenigvuldig(5,2);
 $boolEven			=	isEven(3);
+$upperLenght		=	lengthAndUppercase('alla lala');
+
 	</pre>
 	<p>
 		<?=($som) ?>
