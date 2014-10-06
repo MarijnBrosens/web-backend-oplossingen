@@ -39,7 +39,7 @@
     </head>
     <body>
 	
-	<h1>Opdracht functies</h1>
+	<h1>Opdracht functies-gevorderd</h1>
 	<pre>
 function berekensom($getal1,$getal2){
 	$resultaat	=	$getal1	+	$getal2;
