@@ -31,7 +31,10 @@
 	<pre></pre>
 	<p>
 
-		<?php var_dump($tellerArray) ?>
+
+	<?php foreach($tellerArray as $value): ?>
+		<p><?php echo $value ?></p>
+	<?php endforeach ?>
 
 	</p>
 
