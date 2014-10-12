@@ -8,6 +8,8 @@
 	//var_dump( $_POST);
 	//var_dump( $message);
 
+	
+	//if ( isset ( $_POST ['username']  ) && isset ( $_POST ['password']  ))
 	if ( isset ( $_POST ['submit'] ) )
 	{
 
@@ -46,7 +48,7 @@
 			<ul>
 				<li>
 					<label for="username">Username:</label>
-					<input type="text" name="username" id="username" value="Marijn">
+					<input type="text" name="username" id="username" value="marijn">
 				</li>
 				<li>
 					<label for="password">Paswoord:</label>
