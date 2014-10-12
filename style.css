@@ -51,6 +51,11 @@ table{
 	min-height: 1px;
 }
 
+
+li{
+	list-style: none;
+}
+
 article{
 	background: #fff;
 	float: left;
@@ -96,4 +101,8 @@ a{
 
 .button:hover{
 	background: #004ECC;
+}
+
+.error{
+	color: red;
 }
