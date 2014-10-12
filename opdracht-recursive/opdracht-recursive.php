@@ -53,6 +53,10 @@ return $arrayMetResultaten;
 }
 
 $winst = berekenEindBedrag( $erfenisInEuro, $rentevoetInPercent, $termijnInJaar );
+
+
+value in foreach staat voor de waarde in de array
+key in foreach is de indexwaarde van een array : de positie van 
 	</pre>
 
 	<?php foreach($winst as $value): ?>

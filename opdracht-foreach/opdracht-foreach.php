@@ -15,8 +15,6 @@
 			$tellerArray[ $value ] = 1;
 		}		
 	}
-
-
  ?>
 
 <!doctype html>
