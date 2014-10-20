@@ -57,19 +57,19 @@
             <ul>
                 <li>
                     <label for="straat">Straat:</label>
-                    <input type="text" name="straat" id="straat" value="<?php echo $straat ?>">
+                    <input type="text" name="straat" id="straat" value="<?php echo $straat ?>" <?php echo (isset($_GET['focus']) && $_GET['focus']=='straat')? 'autofocus' : '' ?>>
                 </li>
                 <li>
                     <label for="nummer">Nummer:</label>
-                    <input type="number" name="nummer" id="nummer" value="<?php echo $nummer ?>">
+                    <input type="number" name="nummer" id="nummer" value="<?php echo $nummer ?>"<?php echo (isset($_GET['focus']) && $_GET['focus']=='nummer')? 'autofocus' : '' ?>>
                 </li>
                 <li>
                     <label for="gemeente">Gemeente:</label>
-                    <input type="text" name="gemeente" id="gemeente" value="<?php echo $gemeente ?>">
+                    <input type="text" name="gemeente" id="gemeente" value="<?php echo $gemeente ?>"<?php echo (isset($_GET['focus']) && $_GET['focus']=='gemeente')? 'autofocus' : '' ?>>
                 </li>
                 <li>
                     <label for="postcode">Postcode:</label>
-                    <input type="number" name="postcode" id="postcode" value="<?php echo $postcode ?>">
+                    <input type="number" name="postcode" id="postcode" value="<?php echo $postcode ?>"<?php echo (isset($_GET['focus']) && $_GET['focus']=='postcode')? 'autofocus' : '' ?>>
                 </li>
             </ul>
 

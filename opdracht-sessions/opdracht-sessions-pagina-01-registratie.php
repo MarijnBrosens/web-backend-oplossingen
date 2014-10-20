@@ -32,11 +32,11 @@
 			<ul>
 				<li>
 					<label for="e-mail">Email:</label>
-					<input type="text" name="email" id="email" value="<?php echo $email ?>" >
+					<input type="text" name="email" id="email" value="<?php echo $email ?>" <?php echo (isset($_GET['focus']) && $_GET['focus']=='email')? 'autofocus' : '' ?>>
 				</li>
 				<li>
 					<label for="nickname">Nickname:</label>
-					<input type="text" name="nickname" id="nickname" value="<?php echo $nickname ?>">
+					<input type="text" name="nickname" id="nickname" value="<?php echo $nickname ?>"<?php echo (isset($_GET['focus']) && $_GET['focus']=='nickname')? 'autofocus' : '' ?>>
 				</li>
 			</ul>
 

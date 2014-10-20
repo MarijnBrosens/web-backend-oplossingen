@@ -27,6 +27,19 @@
         $_SESSION['errorMessage'] = '';
 
     }
+    if (isset($_SESSION[ 'email']))         {$email         = $_SESSION[ 'email'];}         else{ $email = '';}
+
+    if (isset($_SESSION[ 'nickname']))      {$nickname      = $_SESSION[ 'nickname'];}      else{ $nickname = '';}
+
+    if (isset($_SESSION[ 'straat']))    { $straat     = $_SESSION[ 'straat']; }else{  $straat     = '';}
+
+    if (isset($_SESSION[ 'nummer']))    { $nummer     = $_SESSION[ 'nummer']; }else{  $nummer     = '';}
+
+    if (isset($_SESSION[ 'gemeente']))  { $gemeente   = $_SESSION[ 'gemeente'];}else{ $gemeente   = '';}
+
+    if (isset($_SESSION[ 'postcode']))  { $postcode   = $_SESSION[ 'postcode'];}else{ $postcode   = '';}  
+
+    if (isset($_SESSION[ 'errorMessage']))  {$errorMessage  = $_SESSION[ 'errorMessage'];}  else{ $errorMessage = '';}  
 
 ?>
 
@@ -45,22 +58,22 @@
         <h1>Opdracht-sessions-pagina-03-overzicht</h1>
 
         <p>
-            Email: <?php echo $_SESSION[ 'email'] ?>
+            Email: <?php echo $_SESSION[ 'email'] ?><a href="opdracht-session-pagina-01-registratie.php?focus=<?= 'email' ?>">| Wijzig</a>
         </p>
         <p>
-            Nickname: <?php echo $_SESSION[ 'nickname'] ?>
+            Nickname: <?php echo $_SESSION[ 'nickname'] ?><a href="opdracht-session-pagina-01-registratie.php?focus=<?= $nickname ?>">| Wijzig</a>
         </p>
         <p>
-            Straat: <?php echo $_SESSION[ 'straat'] ?>
+            Straat: <?php echo $_SESSION[ 'straat'] ?><a href="opdracht-session-pagina-02-adresgegevens.php?focus=<?= $straat ?>">| Wijzig</a>
         </p>
         <p>
-            Nummer: <?php echo $_SESSION[ 'nummer'] ?>
+            Nummer: <?php echo $_SESSION[ 'nummer'] ?><a href="opdracht-session-pagina-02-adresgegevens.php?focus=<?= $nummer ?>">| Wijzig</a>
         </p>
         <p>
-            Gemeente: <?php echo $_SESSION[ 'gemeente'] ?>  
+            Gemeente: <?php echo $_SESSION[ 'gemeente'] ?> <a href="opdracht-session-pagina-02-adresgegevens.php?focus=<?= $gemeente ?>">| Wijzig</a> 
         </p>
         <p>
-            Postcode: <?php echo $_SESSION[ 'postcode'] ?>
+            Postcode: <?php echo $_SESSION[ 'postcode'] ?><a href="opdracht-session-pagina-02-adresgegevens.php?focus=<?= $postcode ?>">| Wijzig</a>
         </p>
     </body>
 </html>
