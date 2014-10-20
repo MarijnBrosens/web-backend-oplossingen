@@ -3,9 +3,15 @@
 	session_start();
 	var_dump( $_SESSION );
 
-	$email 		=	$_SESSION[ 'email'];					
-	$nickname 	=	$_SESSION[ 'nickname'];
+	$email;
+	$nickname;
+	$errorMessage;
 
+	if (isset($_SESSION[ 'email']))			{$email 		= $_SESSION[ 'email'];}			else{ $email = '';}
+
+	if (isset($_SESSION[ 'nickname']))		{$nickname 		= $_SESSION[ 'nickname'];}		else{ $nickname = '';}
+
+	if (isset($_SESSION[ 'errorMessage'])) 	{$errorMessage 	= $_SESSION[ 'errorMessage'];}	else{ $errorMessage = '';}
 ?>
 
 <!doctype html>
@@ -22,18 +28,19 @@
 		<form action="opdracht-sessions-pagina-02-adresgegevens.php" method="POST">
 
  			<h1>Opdracht-sessions-pagina-01-registratie</h1>
+ 			<p class="error"> <?php echo $errorMessage ?></p>
 			<ul>
 				<li>
 					<label for="e-mail">Email:</label>
-					<input type="text" name="email" id="email" value="e-mail">
+					<input type="text" name="email" id="email" value="<?php echo $email ?>" >
 				</li>
 				<li>
 					<label for="nickname">Nickname:</label>
-					<input type="text" name="nickname" id="nickname" value="nickname">
+					<input type="text" name="nickname" id="nickname" value="<?php echo $nickname ?>">
 				</li>
 			</ul>
 
-			<input type="submit" name="submit" id="submit" value="volgende">
+			<input type="submit" name="submit-pagina-01" id="submit-pagina-01" value="volgende">
 
         </form>
 
