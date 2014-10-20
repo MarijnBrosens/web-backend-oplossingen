@@ -130,7 +130,7 @@
 							<?php endif ?>
 						</article>	
 
-					</div>
+					</div><!--/ col-lg-12 -->
 
 				<?php endforeach ?>	
 
@@ -140,11 +140,9 @@
 
 			<?php endif ?>
 
+			</div><!--/col-lg-4 -->
 
-
-			</div>
-
-		</div>
-	</div>
+		</div><!--/row-->
+	</div><!--/container-->
     </body>
 </html>
