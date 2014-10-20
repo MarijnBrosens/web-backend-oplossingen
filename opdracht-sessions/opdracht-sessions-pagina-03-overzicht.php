@@ -14,7 +14,7 @@
         {
 
             $_SESSION[ 'errorMessage'] = 'vul alle velden in';
-            header('Location: opdracht-sessions-pagina-02-adresgegevens.php'); 
+            header('Location: opdracht-sessions-pagina-01-registratie.php'); 
             //als er niets werd ingevuld in een van de vakjes, terug gaan naar pagina-01
         }
 

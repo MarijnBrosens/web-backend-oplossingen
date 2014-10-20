@@ -2,7 +2,7 @@
 
     session_start();
 
-    if ( isset( $_POST[ 'submit-pagina-01' ] ) ){
+    if ( isset( $_POST[ 'submit-pagina-01' ] )){
 
         $_SESSION[ 'email']         = $_POST['email'];                  
         $_SESSION[ 'nickname']      = $_POST['nickname'];
@@ -18,8 +18,6 @@
     
     }else{
 
-        $_SESSION['email']          = '';
-        $_SESSION['nickname']       = '';
         $_SESSION['errorMessage']   = '';
 
     }
