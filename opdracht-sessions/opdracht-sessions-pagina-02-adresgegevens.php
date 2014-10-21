@@ -22,15 +22,15 @@
 
     }
 
-    if (isset($_SESSION[ 'straat']))    { $straat     = $_SESSION[ 'straat']; }else{  $straat     = '';}
+    if (isset($_SESSION[ 'straat']))        { $straat     = $_SESSION[ 'straat']; }         else{ $straat     = '';}
 
-    if (isset($_SESSION[ 'nummer']))    { $nummer     = $_SESSION[ 'nummer']; }else{  $nummer     = '';}
+    if (isset($_SESSION[ 'nummer']))        { $nummer     = $_SESSION[ 'nummer']; }         else{ $nummer     = '';}
 
-    if (isset($_SESSION[ 'gemeente']))  { $gemeente   = $_SESSION[ 'gemeente'];}else{ $gemeente   = '';}
+    if (isset($_SESSION[ 'gemeente']))      { $gemeente   = $_SESSION[ 'gemeente'];}        else{ $gemeente   = '';}
 
-    if (isset($_SESSION[ 'postcode']))  { $postcode   = $_SESSION[ 'postcode'];}else{ $postcode   = '';}  
+    if (isset($_SESSION[ 'postcode']))      { $postcode   = $_SESSION[ 'postcode'];}        else{ $postcode   = '';}  
 
-    if (isset($_SESSION[ 'errorMessage']))  {$errorMessage  = $_SESSION[ 'errorMessage'];}  else{ $errorMessage = '';}  
+    if (isset($_SESSION[ 'errorMessage']))  {$errorMessage= $_SESSION[ 'errorMessage'];}    else{ $errorMessage = '';}  
 
 ?>
 

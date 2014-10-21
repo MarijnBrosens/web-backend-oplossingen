@@ -32,7 +32,7 @@
 			<ul>
 				<li>
 					<label for="e-mail">Email:</label>
-					<input type="text" name="email" id="email" value="<?php echo $email ?>" <?php echo (isset($_GET['focus']) && $_GET['focus']=='email')? 'autofocus' : '' ?>>
+					<input type="text" name="email" id="email" value="<?php echo $email ?>" <?php echo (isset($_GET['focus']) && $_GET['focus']=='email')? 'autofocus' : '' ?> >
 				</li>
 				<li>
 					<label for="nickname">Nickname:</label>
