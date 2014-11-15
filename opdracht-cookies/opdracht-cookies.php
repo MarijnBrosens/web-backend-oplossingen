@@ -19,7 +19,7 @@
 	$message    = '';
 
 	//indien niet ingelogd (cookie bestaat ng niet)
-	if( isset( !$_COOKIE['ingelogd'] ) ) { 
+	if( !isset( $_COOKIE['ingelogd'] ) ) { 
 
 	    //niet ingelogd
 		$message = "U bent uitgelogd.";
