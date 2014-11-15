@@ -14,34 +14,25 @@
         {
 
             $_SESSION[ 'errorMessage'] = 'vul alle velden in';
-            header('Location: opdracht-sessions-pagina-01-registratie.php'); 
+            header('Location: opdracht-sessions-pagina-02-adresgegevens.php'); 
             //als er niets werd ingevuld in een van de vakjes, terug gaan naar pagina-01
         }
 
-    }else{
-
-        $_SESSION['straat']       = '';
-        $_SESSION['nummer']       = '';
-        $_SESSION['gemeente']     = '';
-        $_SESSION['postcode']     = '';
-        $_SESSION['errorMessage'] = '';
-
     }
-    
-    if (isset($_SESSION[ 'email']))         { $email        = $_SESSION[ 'email'];}        else{ $email = '';}
+/*
+    if (isset($_SESSION[ 'email']))         { $email        = $_SESSION[ 'email'];}        else{ $email     = '';}
 
-    if (isset($_SESSION[ 'nickname']))      { $nickname     = $_SESSION[ 'nickname'];}     else{ $nickname = '';}
+    if (isset($_SESSION[ 'nickname']))      { $nickname     = $_SESSION[ 'nickname'];}     else{ $nickname  = '';}
 
-    if (isset($_SESSION[ 'straat']))        { $straat       = $_SESSION[ 'straat']; }      else{ $straat     = '';}
+    if (isset($_SESSION[ 'straat']))        { $straat       = $_SESSION[ 'straat']; }      else{ $straat    = '';}
 
-    if (isset($_SESSION[ 'nummer']))        { $nummer       = $_SESSION[ 'nummer']; }      else{ $nummer     = '';}
+    if (isset($_SESSION[ 'nummer']))        { $nummer       = $_SESSION[ 'nummer']; }      else{ $nummer    = '';}
 
-    if (isset($_SESSION[ 'gemeente']))      { $gemeente     = $_SESSION[ 'gemeente'];}     else{ $gemeente   = '';}
+    if (isset($_SESSION[ 'gemeente']))      { $gemeente     = $_SESSION[ 'gemeente'];}     else{ $gemeente  = '';}
 
-    if (isset($_SESSION[ 'postcode']))      { $postcode     = $_SESSION[ 'postcode'];}     else{ $postcode   = '';}  
-
-    if (isset($_SESSION[ 'errorMessage']))  { $errorMessage = $_SESSION[ 'errorMessage'];} else{ $errorMessage = '';}  
-
+    if (isset($_SESSION[ 'postcode']))      { $postcode     = $_SESSION[ 'postcode'];}     else{ $postcode  = '';}  
+*/
+    var_dump( $_SESSION );    
 ?>
 
 

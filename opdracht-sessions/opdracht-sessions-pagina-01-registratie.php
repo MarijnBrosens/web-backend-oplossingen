@@ -1,17 +1,16 @@
 <?php 
 
-	session_start();
-	var_dump( $_SESSION );
 
-	$email;
-	$nickname;
-	$errorMessage;
+
+	session_start();
 
 	if (isset($_SESSION[ 'email']))			{$email 		= $_SESSION[ 'email'];}			else{ $email = '';}
 
 	if (isset($_SESSION[ 'nickname']))		{$nickname 		= $_SESSION[ 'nickname'];}		else{ $nickname = '';}
 
 	if (isset($_SESSION[ 'errorMessage'])) 	{$errorMessage 	= $_SESSION[ 'errorMessage'];}	else{ $errorMessage = '';}
+
+	var_dump( $_SESSION );
 ?>
 
 <!doctype html>
@@ -28,7 +27,7 @@
 		<form action="opdracht-sessions-pagina-02-adresgegevens.php" method="POST">
 
  			<h1>Opdracht-sessions-pagina-01-registratie</h1>
- 			<p class="error"> <?php echo $errorMessage ?></p>
+ 			<p class="error"><?php echo $errorMessage ?></p>
 			<ul>
 				<li>
 					<label for="e-mail">Email:</label>

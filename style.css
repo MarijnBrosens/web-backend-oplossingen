@@ -116,3 +116,21 @@ select{
 	display: block;
 	padding: 10px 0;
 }
+
+.btn,
+input{
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	padding: .5em;
+}
+
+.btn:hover,
+input[type="submit"]:hover{
+	background: #004ECC;
+	cursor: pointer;
+	color: #fff;
+}
+
+input:focus{
+	background: #F2DEDE;
+}

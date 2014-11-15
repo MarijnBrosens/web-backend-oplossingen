@@ -2,6 +2,7 @@
 
     session_start();
 
+
     if ( isset( $_POST[ 'submit-pagina-01' ] )){
 
         $_SESSION[ 'email']         = $_POST['email'];                  
@@ -10,16 +11,16 @@
 
         if (($_POST['email'] == '') || ($_POST['nickname'] == ''))
         {
+            if (($_POST['email'] == '')) {
+                $_SESSION[ 'errorMessage'] = 'vul email velden in!';
+                header('Location: opdracht-sessions-pagina-01-registratie.php?focus=email'); 
+            }
 
-            $_SESSION[ 'errorMessage'] = 'vul alle velden in';
-            header('Location: opdracht-sessions-pagina-01-registratie.php'); 
+
+            //header('Location: opdracht-sessions-pagina-01-registratie.php'); 
             //als er niets werd ingevuld in een van de vakjes, terug gaan naar pagina-01
         }
     
-    }else{
-
-        $_SESSION['errorMessage']   = '';
-
     }
 
     if (isset($_SESSION[ 'straat']))        { $straat     = $_SESSION[ 'straat']; }         else{ $straat     = '';}
@@ -31,6 +32,8 @@
     if (isset($_SESSION[ 'postcode']))      { $postcode   = $_SESSION[ 'postcode'];}        else{ $postcode   = '';}  
 
     if (isset($_SESSION[ 'errorMessage']))  {$errorMessage= $_SESSION[ 'errorMessage'];}    else{ $errorMessage = '';}  
+
+    var_dump( $_SESSION );
 
 ?>
 
@@ -53,7 +56,7 @@
         </ul>       
             
         <form action="opdracht-sessions-pagina-03-overzicht.php" method="POST">
-            <p class="error"> <?php echo $errorMessage ?></p>
+            <p class="error"><?php echo $errorMessage ?></p>
             <ul>
                 <li>
                     <label for="straat">Straat:</label>
