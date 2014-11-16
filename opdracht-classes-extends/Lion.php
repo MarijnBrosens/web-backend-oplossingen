@@ -1,6 +1,6 @@
 <?php 
 
-class Lion extends Animals
+class Lion extends Animal
 {
 	
 	function __construct(argument)
