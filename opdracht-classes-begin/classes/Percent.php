@@ -1,33 +1,42 @@
 <?php 
 
-class Percent{
+	class Percent{
 
-	public $absolute;
-	public $relative;
-	public $hundred;
-	public $nominal;
 
-	public function __construct($new,$unit)
-	{
-		$this->$absolute 	= formatNumber($new/$unit);
-		$this->$relative 	= formatNumber($this->$absolute-1);
-		$this->$hundred		= formatNumber($this->$absolute*100);
-		$this->$nominal		= '';
+		public $absolute;
+		public $relative;
+		public $hundred;
+		public $nominal;
 
-		if ($this->$absolute > 1) {
-			$this->$nominal = 'positive';
-		}elseif ($this->$absolute == 1) {
-			$this->nominal = 'status quo';
-		}else{
-			$this->nominal = 'negative';
-		}
+		public function __construct($new,$unit)
+		{ 
+			/*fout: $this->$absolute 	= $this->formatNumber($new/$unit);*/
+			/*			   $            */
+			/*juist:$this->absolute 	= $this->formatNumber($new/$unit);	*/		
+			$this->absolute 	= $this->formatNumber($new/$unit);
+			$this->relative 	= $this->formatNumber($this->absolute-1);
+			/*fout: $this->relative 	= $this->formatNumber($this->$absolute-1);*/
+			/*			   									 		 $            */
+			/*juist:$this->relative 	= $this->formatNumber($this->absolute-1); */	
+			$this->hundred		= $this->formatNumber($this->relative*100);
 
-		public function formatNumber($number)
+
+			$this->nominal 		=	"status-quo";
+
+			if ( $this->hundred > 0)
+			{
+				$this->nominal	=	"positive";
+			}
+			elseif ( $this->hundred < 0 )
+			{
+				$this->nominal	=	"negative";
+			}
+		}	
+
+	 	public function formatNumber( $number )
 		{
-			number_format($number,2);
+			return number_format($number, 2, '.', ' ');
 		}
-}
-
-
+	}
 
 ?>
