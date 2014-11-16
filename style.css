@@ -51,12 +51,12 @@ table{
 	min-height: 1px;
 }
 
-
 li{
 	list-style: none;
 }
 
 article{
+	width: 100%;
 	background: #fff;
 	float: left;
 	padding: 20px;
