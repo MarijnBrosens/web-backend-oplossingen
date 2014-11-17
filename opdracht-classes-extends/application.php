@@ -15,6 +15,13 @@
     $lion1      = new Lion('Simba','male-kid',100,'good guy');
     $lion2      = new Lion('Scar','male',110,'bad guy');
 
+    $lion1->changeHealth(+15);
+
+    $zebra1     = new Zebra('Louisa','female',80,'north africa');
+    $zebra2     = new Zebra('Marja','female',70,'south africa');
+
+    $zebra1->changeHealth(-25);
+
 ?>
 
 <!doctype html>
@@ -69,6 +76,24 @@
                 <li><?php echo $lion2->getHealth(); ?></li>
                 <li><?php echo $lion2->doSpecialMove(); ?></li>
                 <li><?php echo $lion2->getSpecies(); ?></li>
+            </ul>
+
+            <h2>Instanties van Zebra class</h2>
+
+            <h2><?php echo $zebra1->getName(); ?></h2>
+            <ul>
+                <li><?php echo $zebra1->getGender(); ?></li>
+                <li><?php echo $zebra1->getHealth(); ?></li>
+                <li><?php echo $zebra1->doSpecialMove(); ?></li>
+                <li><?php echo $zebra1->getSpecies(); ?></li>
+            </ul>
+
+            <h2><?php echo $zebra2->getName(); ?></h2>
+            <ul>
+                <li><?php echo $zebra2->getGender(); ?></li>
+                <li><?php echo $zebra2->getHealth(); ?></li>
+                <li><?php echo $zebra2->doSpecialMove(); ?></li>
+                <li><?php echo $zebra2->getSpecies(); ?></li>
             </ul>
 
         </div>
