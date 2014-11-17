@@ -12,6 +12,9 @@
     $boar->changeHealth(+10);
     $bird->changeHealth(-40);
 
+    $lion1      = new Lion('Simba','male-kid',100,'good guy');
+    $lion2      = new Lion('Scar','male',110,'bad guy');
+
 ?>
 
 <!doctype html>
@@ -24,29 +27,50 @@
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
+        <div class="container">
+            <h1>Opdracht classes extends</h1>
+            <h2>Instanties van Animal class</h2>
 
-        <h1>Opdracht classes extends</h1>
+            <h2><?php echo $meerkat->getName(); ?></h2>
+            <ul>
+                <li><?php echo $meerkat->getGender(); ?></li>
+                <li><?php echo $meerkat->getHealth(); ?></li>
+                <li><?php echo $meerkat->doSpecialMove(); ?></li>
+            </ul>
 
-        <h2><?php echo $meerkat->getName(); ?></h2>
-        <ul>
-            <li><?php echo $meerkat->getGender(); ?></li>
-            <li><?php echo $meerkat->getHealth(); ?></li>
-            <li><?php echo $meerkat->doSpecialMove(); ?></li>
-        </ul>
+            <h2><?php echo $boar->getName(); ?></h2>
+            <ul>
+                <li><?php echo $boar->getGender(); ?></li>
+                <li><?php echo $boar->getHealth(); ?></li>
+                <li><?php echo $boar->doSpecialMove(); ?></li>
+            </ul>
 
-        <h2><?php echo $boar->getName(); ?></h2>
-        <ul>
-            <li><?php echo $boar->getGender(); ?></li>
-            <li><?php echo $boar->getHealth(); ?></li>
-            <li><?php echo $boar->doSpecialMove(); ?></li>
-        </ul>
+            <h2><?php echo $bird->getName(); ?></h2>
+            <ul>
+                <li><?php echo $bird->getGender(); ?></li>
+                <li><?php echo $bird->getHealth(); ?></li>
+                <li><?php echo $bird->doSpecialMove(); ?></li>
+            </ul>
 
-        <h2><?php echo $bird->getName(); ?></h2>
-        <ul>
-            <li><?php echo $bird->getGender(); ?></li>
-            <li><?php echo $bird->getHealth(); ?></li>
-            <li><?php echo $bird->doSpecialMove(); ?></li>
-        </ul>
 
+            <h2>Instanties van Lion class</h2>
+
+            <h2><?php echo $lion1->getName(); ?></h2>
+            <ul>
+                <li><?php echo $lion1->getGender(); ?></li>
+                <li><?php echo $lion1->getHealth(); ?></li>
+                <li><?php echo $lion1->doSpecialMove(); ?></li>
+                <li><?php echo $lion1->getSpecies(); ?></li>
+            </ul>
+
+            <h2><?php echo $lion2->getName(); ?></h2>
+            <ul>
+                <li><?php echo $lion2->getGender(); ?></li>
+                <li><?php echo $lion2->getHealth(); ?></li>
+                <li><?php echo $lion2->doSpecialMove(); ?></li>
+                <li><?php echo $lion2->getSpecies(); ?></li>
+            </ul>
+
+        </div>
     </body>
 </html>
