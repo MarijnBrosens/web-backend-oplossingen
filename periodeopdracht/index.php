@@ -16,7 +16,6 @@
 		    herlaadPagina();
 		}
 
-
 		//$todos = array_push($_SESSION['item']['todo'], array($_POST['item']));
 	    //$todos = $_SESSION['item']['todo'];
 	}
