@@ -6,7 +6,7 @@
 	$dones		= 	( isset( $_SESSION['item']['done'] ) ) ? $dones = $_SESSION['item']['done'] : '';
 
 	if(isset($_POST['voegToe'])) {
-		//item toevoegen aan todo array
+		//nieuw item toevoegen aan todo array
 		
 		$_SESSION['item']['todo'][] = $_POST['item'];
 	    herlaadPagina();
@@ -20,15 +20,13 @@
 
 		$oldTodos = $_SESSION['item']['todo'];
 
-	    $_SESSION['item']['done'][] = $_GET['toDone'];
-	    $todos = array_diff($oldTodos, array($_GET['toDone']));
-	    $_SESSION['item']['todo'] = $todos;
+	    $_SESSION['item']['done'][] = $_GET['toDone'];	    	    
+	    $_SESSION['item']['todo'] =  array_diff($oldTodos, array($_GET['toDone']));
 	    herlaadPagina();
 
 	    //array_push( $_SESSION['item']['done'], array( $_GET['done']));
 	    //array van todo updaten
-	    //$_SESSION['item']['todo'] = array_diff($_SESSION['item']['todo'], array($_GET['done']));
-	     
+	    //$_SESSION['item']['todo'] = array_diff($_SESSION['item']['todo'], array($_GET['done']));     
 	}
 
 	if(isset($_GET['toTodo'])) {
@@ -77,9 +75,21 @@
         <meta name="description" content="periodeopdracht todo-app">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Periode opdracht todo</title>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+    	<div class="container">
+
+        <h1>Item toevoegen</h1>
+
+		<form action="index.php" method="post">
+		    <input type="text" name="item" placeholder="item" />
+		    <input type="submit" name="voegToe" value="Voeg toe" />
+		</form>
+
         <h1>Todo app</h1>
         <h2>Nog te doen</h2>
 
@@ -89,8 +99,8 @@
 		    <ul>
 		    	<?php foreach ($todos as $todo): ?>
 		            <li>
-		                <a href="index.php?toDone=<?= $todo ?>"><?= $todo ?></a>
-		                <a href="index.php?verwijderTodo=<?= $todo ?>">Verwijder</a>
+		                <a href="index.php?toDone=<?= $todo ?>" class="toDone"> <i class="fa fa-chevron-down"></i> <?= $todo ?></a>
+		                <a href="index.php?verwijderTodo=<?= $todo ?>" class="verwijder"><i class="fa fa-times"></i></a>
 		            </li>
 		        <?php endforeach ?>
 		    </ul>
@@ -104,20 +114,13 @@
 		    <ul>
 		    	<?php foreach ($dones as $done): ?>
 		            <li>
-		                <a href="index.php?toTodo=<?= $done ?>"><?= $done ?></a>
-		                <a href="index.php?verwijderDone=<?= $done ?>">Verwijder</a>
+		                <a href="index.php?toTodo=<?= $done ?>" class="toTodo"> <i class="fa fa-chevron-down"></i> <?= $done ?></a>
+		                <a href="index.php?verwijderDone=<?= $done ?>" class="verwijder"><i class="fa fa-times"></i></a>
 		            </li>
 		        <?php endforeach ?>
 		    </ul>
 		<?php } ?>
-
-        <h1>Todo toevoegen</h1>
-
-		<form action="index.php" method="post">
-		    <label for="item">item:</label>
-		    <input type="text" name="item" />
-		    <input type="submit" name="voegToe" value="Voeg toe" />
-		</form>
+		</div>
 
     </body>
 </html>
