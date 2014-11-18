@@ -4,12 +4,18 @@
 
 	$todos		=	( isset( $_SESSION['item']['todo'] ) ) ? $_SESSION['item']['todo'] : '';
 	$dones		= 	( isset( $_SESSION['item']['done'] ) ) ? $dones = $_SESSION['item']['done'] : '';
+	$message = "";
 
 	if(isset($_POST['voegToe'])) {
 		//nieuw item toevoegen aan todo array
 		
-		$_SESSION['item']['todo'][] = $_POST['item'];
-	    herlaadPagina();
+		if ($_POST['item'] == "") {
+			$message = "Geef een waarde in snoeper!";
+		}else{			
+			$_SESSION['item']['todo'][] = $_POST['item'];
+		    herlaadPagina();
+		}
+
 
 		//$todos = array_push($_SESSION['item']['todo'], array($_POST['item']));
 	    //$todos = $_SESSION['item']['todo'];
@@ -92,6 +98,8 @@
 
         <h1>Todo app</h1>
         <h2>Nog te doen</h2>
+
+        <p class="error"><?php echo $message ?></p> 
 
 		<?php if(empty($todos)) { ?>
 		    <p>Je hebt nog geen TODO's toegevoegd. Zo weinig werk of meesterplanner?</p>
