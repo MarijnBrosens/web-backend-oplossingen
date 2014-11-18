@@ -6,11 +6,11 @@
 	$dones		= 	( isset( $_SESSION['item']['done'] ) ) ? $dones = $_SESSION['item']['done'] : '';
 
 	if(isset($_POST['voegToe'])) {
+		//item toevoegen aan todo array
 		
 		$_SESSION['item']['todo'][] = $_POST['item'];
 	    herlaadPagina();
 
-		//item toevoegen aan multilevel array
 		//$todos = array_push($_SESSION['item']['todo'], array($_POST['item']));
 	    //$todos = $_SESSION['item']['todo'];
 	}
@@ -36,10 +36,8 @@
 
 		$oldDones = $_SESSION['item']['done'];
 		
-	    $_SESSION['item']['todo'][] =  $_GET['toTodo'];
-	    $dones = array_diff($oldDones, array($_GET['toTodo']));
-	    $todos = $_SESSION['item']['todo'];    
-	    $_SESSION['item']['done'] = $dones;
+	    $_SESSION['item']['todo'][] =  $_GET['toTodo'];	     
+	    $_SESSION['item']['done'] = array_diff($oldDones, array($_GET['toTodo']));  
 	    herlaadPagina(); 
 
 	    //array_push( $_SESSION['item']['done'], array( $_GET['done']));
