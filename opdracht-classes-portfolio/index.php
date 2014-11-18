@@ -10,6 +10,7 @@
 	}
 
 	$html   = new HTMLBuilder($header, $body, $footer);
-	//var_dump($html);
+	//
+	var_dump($html);
 
 ?>
