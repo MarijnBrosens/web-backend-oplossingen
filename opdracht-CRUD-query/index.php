@@ -1,9 +1,5 @@
 <?php
 
-	function __autoload($className) {
-	    include 'classes/' . $className  . '.php';
-	}
-
 	try {
 
 		$db = new PDO(	"mysql:host=localhost;dbname=bieren",
@@ -44,7 +40,6 @@
 	}
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
