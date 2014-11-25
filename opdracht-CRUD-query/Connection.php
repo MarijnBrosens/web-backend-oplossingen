@@ -1,16 +1,4 @@
-<?php
-
-	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
-
-	function view( $file, $data = false )
-	{
-		if ( $data )
-		{
-			extract( $data );
-		} 
-
-		include( $file );
-	}
+<?php  
 
 	try {
 
@@ -51,13 +39,5 @@
 		/*$message['type']	=	'error';
 		$message['text']	=	$e->getMessage();*/
 	}
-
-	view( 'header.view.php', array( 'title' => 'Opdracht-CRUD-query', 
-									'messages' => Message::getMessages() ) );
-
-	view( 'body.view.php', array( 'kolommen' => $kolommen, 
-									'bieren' => $bieren ) );
-
-	view( 'footer.view.php' );
 
 ?>
