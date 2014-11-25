@@ -58,6 +58,7 @@
 	}
 
 	if(isset($_GET['verwijderTodo'])) {
+		
 	    $_SESSION['item']['todo'] = array_diff($todos, array($_GET['verwijderTodo']));
 	    herlaadPagina();
 

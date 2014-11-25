@@ -107,8 +107,20 @@ a:hover{
 	background: #004ECC;
 }
 
+.ok{
+	color: #004ECC;
+}
+
 .error{
 	color: red;
+}
+
+.even{
+	background:#fff;
+}
+
+table tr:nth-child(odd) td{
+	background:#ddd;
 }
 
 label,
