@@ -1,17 +1,12 @@
 
-
 	<form action="index.php" method="post">
 		<select>
 
-			<?php foreach ($bieren as $key => $bier): ?>
+			<?php foreach ($brouwers as $brouwer): ?>
 
-
-					<?php foreach ($bier as $value): ?>
-
-						<option><?= $value ?></option>
-
-					<?php endforeach ?>
-
+				<option value="<?php echo $brouwer['brouwernr'] ?>">
+					<?php echo $brouwer['brnaam'] ?>
+				</option>
 
 			<?php endforeach ?>
 

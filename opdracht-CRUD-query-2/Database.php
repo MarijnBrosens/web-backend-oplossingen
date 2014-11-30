@@ -14,25 +14,25 @@
 			$statement 	= $this->db->prepare( $queryString );
 			$statement->execute();
 
-			$bieren		=	array();
-
-			# alle bieren + kolomhead
 			while ( $row = $statement->fetch( PDO::FETCH_ASSOC ) ) {
-				$bieren[] 	=	$row;
+				$brouwers[] 	=	$row;
 			}
-			var_dump($bieren[0]);
+			var_dump($brouwers[0]);
+			var_dump($brouwers[0]['brnaam']);
 
 			$kolommen	=	array();
 			$kolommen[]	=	"#";
 
 			# kolomhead namen
-			foreach( $bieren[0] as $key => $bier ) {
+			foreach( $brouwers[0] as $key => $brouwer ) {
 				$kolommen[]	=	$key;				
 			}
 			//var_dump($kolommen);
 
 			$returnArray['kolommen']	=	$kolommen;
-			$returnArray['bieren']		=	$bieren;
+			$returnArray['brouwers']	=	$brouwers;
+
+			//var_dump($returnArray['brouwer']);
 
 			return $returnArray;
 		}

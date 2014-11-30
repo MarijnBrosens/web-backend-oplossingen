@@ -17,14 +17,13 @@
 
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
 		$db 		= 	new Database( $connection );
-		$dataArray	=	$db->query( "	SELECT brouwernr , brnaam
-										FROM brouwers
-									"
+		$dataArray	=	$db->query( 'SELECT brnaam, brouwernr
+										FROM brouwers'
 									);
 
 		$kolomnamen = $dataArray['kolommen'];
 //		var_dump( $kolomnamen );		
-		$bieren 	= $dataArray['bieren'];
+		$brouwers 	= $dataArray['brouwers'];
 //		var_dump( $bieren);
 
 		Message::setMessage( 'connectie gelukt' , 'ok');
@@ -34,12 +33,11 @@
 		Message::setMessage( $e->getMessage() , 'error');
 	}
 
-
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-query', 
 									'messages' 	=> Message::getMessages() ) );
 
 	view( 'body.view.php', array( 	'kolommen' 	=> $kolomnamen, 
-									'bieren' 	=> $bieren ) );
+									'brouwers' 	=> $brouwers ) );
 
 	view( 'footer.view.php' );
 
