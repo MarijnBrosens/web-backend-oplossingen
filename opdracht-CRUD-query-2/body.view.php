@@ -13,3 +13,19 @@
 		</select>
 		<input type="submit" name="voegToe" value="Voeg toe" />
 	</form>
+
+	<table>		
+
+		<thead>
+			<tr>
+				<?php foreach ($kolommen as $kolomNaam): ?>
+					<th><?= $kolomNaam ?></th>
+				<?php endforeach ?>
+			</tr>
+		</thead>
+
+		<tbody>
+			
+		</tbody>
+
+	</table>

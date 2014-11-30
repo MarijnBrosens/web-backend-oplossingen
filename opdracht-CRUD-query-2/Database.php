@@ -21,7 +21,7 @@
 			var_dump($brouwers[0]['brnaam']);
 
 			$kolommen	=	array();
-			$kolommen[]	=	"#";
+			//$kolommen[]	=	"#";
 
 			# kolomhead namen
 			foreach( $brouwers[0] as $key => $brouwer ) {
