@@ -10,7 +10,7 @@
 
         <?php foreach ($messages as $message): ?>
 
-            <div class="modal <?= $message[ 'type' ] ?>">
+            <div class="<?= $message[ 'type' ] ?>">
                 <?= $message[ 'text' ] ?>
             </div>
 
