@@ -20,15 +20,9 @@
 
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
 		$db 		= 	new Database( $connection );
-		$brouwerArray	=	$db->query( '	INSERT INTO brouwers 
-														(brnaam, adres, postcode, gemeente, omzet)
-											VALUES ( :brnaam, :adres, :postcode, :gemeente, :omzet )');
-
-		$kolomnamen = $brouwerArray['kolommen'];
-
-
-
-		Message::setMessage( 'connectie gelukt' , 'ok');
+		$db->query( '	INSERT INTO brouwers 
+								(brnaam, adres, postcode, gemeente, omzet)
+						VALUES ( :brnaam, :adres, :postcode, :gemeente, :omzet )');
 
 	} catch ( PDOException $e ) {
 

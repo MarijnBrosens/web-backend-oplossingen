@@ -24,16 +24,12 @@
 			if ( $isAdded )
 			{
 				$insertId			=	$this->db->lastInsertId();
-				$message['type']	=	'success';
-				$message['text']	=	'Brouwerij succesvol toegevoegd. Het unieke nummer van deze brouwerij is ' . $insertId . '.';
+				Message::setMessage( 'Brouwerij succesvol toegevoegd. Het unieke nummer van deze brouwerij is ' . $insertId . '.' , 'ok');
 			}
 			else
 			{
-				$message['type']	=	'error';
-				$message['text']	=	'Er ging iets mis met het toevoegen, probeer opnieuw';
+				Message::setMessage( 'mislukt', 'error');
 			}
-
-			//return $returnArray;
 		}
 
 
