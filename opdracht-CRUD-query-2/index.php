@@ -1,4 +1,7 @@
 <?php
+
+	$geselecteerdeBrouwer	=	"";
+
 	//opdracht-Security-login bekijken
 	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
 
@@ -43,7 +46,7 @@
 		}
 
 		$bierenHeader = $bierenArray['bierenHeader'];
-		$bieren=$bierenArray['bieren'];
+		$bieren =  $bierenArray['bieren'];
 
 
 

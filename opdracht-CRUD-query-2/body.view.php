@@ -1,12 +1,10 @@
 
-	<form action="index.php" method="post">
-		<select>
+	<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+		<select  name="brouwernr">
 
 			<?php foreach ($brouwers as $brouwer): ?>
 
-				<option value="<?php echo $brouwer['brouwernr'] ?>">
-					<?php echo $brouwer['brnaam'] ?>
-				</option>
+				<option value="<?= $brouwer['brouwernr'] ?>" <?= ( $geselecteerdeBrouwer === $brouwer['brouwernr'] ) ? 'selected' : '' ?>><?= $brouwer['brnaam'] ?></option>
 
 			<?php endforeach ?>
 
@@ -18,8 +16,8 @@
 
 		<thead>
 			<tr>
-				<?php foreach ($kolommen as $kolomNaam): ?>
-					<th><?= $kolomNaam ?></th>
+				<?php foreach ($bierenHeader as $columnName): ?>
+					<th><?= $columnName ?></th>
 				<?php endforeach ?>
 			</tr>
 		</thead>
