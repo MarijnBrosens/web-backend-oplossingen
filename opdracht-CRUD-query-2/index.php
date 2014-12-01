@@ -17,14 +17,39 @@
 
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
 		$db 		= 	new Database( $connection );
-		$dataArray	=	$db->query( 'SELECT brnaam, brouwernr
-										FROM brouwers'
-									);
+		$brouwerArray	=	$db->query( '	SELECT brnaam, brouwernr 
+											FROM brouwers');
 
-		$kolomnamen = $dataArray['kolommen'];
+		$kolomnamen = $brouwerArray['kolommen'];
 //		var_dump( $kolomnamen );		
-		$brouwers 	= $dataArray['brouwers'];
+		$brouwers 	= $brouwerArray['brouwers'];
 //		var_dump( $bieren);
+
+
+
+		// Bieren query die bij brouwer horen
+		if ( isset( $_GET[ 'brouwernr' ] ) )
+		{
+			$geselecteerdeBrouwer	=	$_GET[ 'brouwernr' ];
+
+			$bierenArray	=	$db->query('SELECT bieren.naam
+										FROM bieren 
+										WHERE bieren.brouwernr = :brouwernr');
+		}
+		else
+		{
+			$bierenQueryString	=	'SELECT bieren.naam
+										FROM bieren';
+
+			$bierenArray = $db->prepare( $bierenQueryString );
+		}
+
+
+
+
+
+
+
 
 		Message::setMessage( 'connectie gelukt' , 'ok');
 

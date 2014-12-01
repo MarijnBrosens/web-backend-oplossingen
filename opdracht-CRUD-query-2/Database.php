@@ -12,13 +12,18 @@
 		public function query( $queryString )
 		{
 			$statement 	= $this->db->prepare( $queryString );
+			
+			if ( isset( $_GET[ 'brouwernr' ] ) ) {
+				$statement->bindParam( ':brouwernr', $_GET[ 'brouwernr' ] );
+			}
+
 			$statement->execute();
 
 			while ( $row = $statement->fetch( PDO::FETCH_ASSOC ) ) {
 				$brouwers[] 	=	$row;
 			}
-			var_dump($brouwers[0]);
-			var_dump($brouwers[0]['brnaam']);
+			/*var_dump($brouwers[0]);
+			var_dump($brouwers[0]['brnaam']);*/
 
 			$kolommen	=	array();
 			//$kolommen[]	=	"#";

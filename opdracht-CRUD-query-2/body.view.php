@@ -14,7 +14,7 @@
 		<input type="submit" name="voegToe" value="Voeg toe" />
 	</form>
 
-	<table>		
+	<table>	
 
 		<thead>
 			<tr>
@@ -25,7 +25,14 @@
 		</thead>
 
 		<tbody>
-			
+		
+			<?php foreach ($bieren as $key => $biernaam): ?>
+				<tr class="<?= ( ( $key + 1) %2 == 0 ) ? 'even' : '' ?>">
+					<td><?= ( $key + 1 ) ?></td>
+					<td><?= $biernaam ?></td>
+				</tr>
+			<?php endforeach ?>
+
 		</tbody>
 
 	</table>
