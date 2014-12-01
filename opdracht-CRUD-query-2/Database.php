@@ -50,8 +50,8 @@
 				$bieren[ ]	=	$row[ 'naam' ];
 			}
 
-
-
+			$returnArray['bieren']		=	$bieren;
+			$returnArray['bierenHeader']=	$bierenHeader;
 			$returnArray['kolommen']	=	$kolommen;
 			$returnArray['brouwers']	=	$brouwers;
 

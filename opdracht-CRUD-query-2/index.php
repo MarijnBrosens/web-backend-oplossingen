@@ -42,6 +42,9 @@
 										FROM bieren');
 		}
 
+		$bierenHeader = $bierenArray['bierenHeader'];
+		$bieren=$bierenArray['bieren'];
+
 
 
 
@@ -60,7 +63,9 @@
 									'messages' 	=> Message::getMessages() ) );
 
 	view( 'body.view.php', array( 	'kolommen' 	=> $kolomnamen, 
-									'brouwers' 	=> $brouwers ) );
+									'brouwers' 	=> $brouwers,
+									'bieren' 	=> $bieren,
+									'bierenHeader' => $bierenHeader) );
 
 	view( 'footer.view.php' );
 
