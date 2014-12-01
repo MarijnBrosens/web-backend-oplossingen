@@ -12,7 +12,7 @@
 		public function query( $queryString )
 		{
 			$statement 	= $this->db->prepare( $queryString );
-			
+
 			if ( isset( $_GET[ 'brouwernr' ] ) ) {
 				$statement->bindParam( ':brouwernr', $_GET[ 'brouwernr' ] );
 			}
@@ -33,6 +33,15 @@
 				$kolommen[]	=	$key;				
 			}
 			//var_dump($kolommen);
+
+			$bierenHeader	=	array();
+			$bierenHeader[]	=	'Aantal';
+
+			for ($columnNumber = 0; $columnNumber  < $bierenStatement->columnCount( );  ++$columnNumber) 
+			{ 
+				$bierenHeader[] = $bierenStatement->getColumnMeta( $columnNumber )['name'];
+			}
+			
 
 			$returnArray['kolommen']	=	$kolommen;
 			$returnArray['brouwers']	=	$brouwers;

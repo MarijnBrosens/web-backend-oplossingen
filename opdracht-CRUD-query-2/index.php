@@ -38,10 +38,8 @@
 		}
 		else
 		{
-			$bierenQueryString	=	'SELECT bieren.naam
-										FROM bieren';
-
-			$bierenArray = $db->prepare( $bierenQueryString );
+			$bierenArray	=	$db->query('SELECT bieren.naam
+										FROM bieren');
 		}
 
 
