@@ -38,7 +38,7 @@
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-query', 
 									'messages' 	=> Message::getMessages() ) );
 
-	view( 'body.view.php', array( 	'kolommen' 	=> $kolomnamen) );
+	view( 'body.view.php');
 
 	view( 'footer.view.php' );
 
