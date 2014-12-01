@@ -37,11 +37,20 @@
 			$bierenHeader	=	array();
 			$bierenHeader[]	=	'Aantal';
 
-			for ($columnNumber = 0; $columnNumber  < $bierenStatement->columnCount( );  ++$columnNumber) 
+			for ($columnNumber = 0; $columnNumber  < $statement->columnCount( );  ++$columnNumber) 
 			{ 
-				$bierenHeader[] = $bierenStatement->getColumnMeta( $columnNumber )['name'];
+				$bierenHeader[] = $statement->getColumnMeta( $columnNumber )['name'];
 			}
-			
+
+			/* bieren in een leesbare array plaatsen */
+			$bieren	=	array();
+
+			while( $row = $statement->fetch( PDO::FETCH_ASSOC ) )
+			{
+				$bieren[ ]	=	$row[ 'naam' ];
+			}
+
+
 
 			$returnArray['kolommen']	=	$kolommen;
 			$returnArray['brouwers']	=	$brouwers;
