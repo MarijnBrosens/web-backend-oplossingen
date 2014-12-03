@@ -14,15 +14,15 @@
 
 			<tbody>
 				<?php foreach ($brouwers as $key => $brouwer): ?>
-					<tr class="<?= ( ($key+1)%2 == 0 ) ? 'even' : ''  ?>">
+					<tr>
 						<td><?= ++$key ?></td>
 						<?php foreach ($brouwer as $value): ?>
 							<td><?= $value ?></td>
 						<?php endforeach ?>
 						<td>
 							<!-- http://stackoverflow.com/questions/7935456/input-type-image-submit-form-value -->
-							<button type="submit" name="delete" value="<?= $brouwer['brouwernr'] ?>" class="delete-button">
-								<img src="icon-delete.png" alt="Delete button">delete
+							<button type="submit" name="delete" value="<?= $brouwer['brouwernr'] ?>" class="btn">
+								<img src="delete-icon-mini.png" alt="Delete button">Delete
 							</button>
 						</td>
 					</tr>

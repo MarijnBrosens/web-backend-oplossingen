@@ -23,8 +23,11 @@
 		$db->deleteQuery( '	DELETE FROM brouwers
 							WHERE brouwernr = :brouwernr');
 
-		$db->selectQuery('	SELECT * 
+		$dataArray = $db->selectQuery('	SELECT * 
 							FROM brouwers');
+
+		$brouwersFieldnames = $dataArray['brouwersFieldnames'];
+		$brouwers 			= $dataArray['brouwers'];
 
 	} catch ( PDOException $e ) {
 
@@ -34,7 +37,7 @@
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-delete', 
 									'messages' 	=> Message::getMessages() ) );
 
-	view( 'body.view.php', array('brouwersFieldnames' => 'brouwersFieldnames') );
+	view( 'body.view.php', array('brouwersFieldnames' => $brouwersFieldnames,'brouwers' => $brouwers) );
 
 	view( 'footer.view.php' );
 
