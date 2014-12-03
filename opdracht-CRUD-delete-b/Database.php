@@ -17,14 +17,6 @@
 
 			$isDeleted 	=	$deleteStatement->execute();
 
-			if ( $isDeleted )
-			{
-				Message::setMessage( 'Deze record is succesvol verwijderd.','ok');
-			}
-			else
-			{
-				Message::setMessage( 'Deze record kon niet verwijderd worden. ', 'error');
-			}
 		}
 
 		public function selectQuery($queryString)

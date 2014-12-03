@@ -147,8 +147,14 @@ input[type="submit"]:hover{
 input:focus{
 	background: #F2DEDE;
 }
+
 table tr.confirm-delete:nth-child(odd) td,
 .confirm-delete{
 	background: red;
 	color:#fff;
+}
+
+div.confirm-delete{
+	color: red;
+	background:transparent;
 }

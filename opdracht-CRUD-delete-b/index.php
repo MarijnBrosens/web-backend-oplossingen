@@ -37,6 +37,17 @@
 		$brouwersFieldnames = $dataArray['brouwersFieldnames'];
 		$brouwers 			= $dataArray['brouwers'];
 
+		if ( $deleteId)
+		{
+			Message::setMessage( $deleteId,'ok');
+		}
+		else
+		{
+			Message::setMessage( 'Deze record kon niet verwijderd worden. ', 'error');
+		}
+
+
+
 	} catch ( PDOException $e ) {
 
 		Message::setMessage( $e->getMessage() , 'error');

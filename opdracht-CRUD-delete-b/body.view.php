@@ -13,7 +13,7 @@
 			</thead>
 
 			<?php if ( $deleteConfirm ): ?>
-				<div>
+				<div class="confirm-delete">
 					Bent u zeker dat u deze record wilt verwijderen?
 					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
 
@@ -26,7 +26,7 @@
 						</button>
 
 					</form>
-				</div>
+					</div>
 			<?php endif ?>			
 
 			<tbody>
