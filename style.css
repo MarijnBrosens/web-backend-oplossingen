@@ -148,13 +148,13 @@ input:focus{
 	background: #F2DEDE;
 }
 
-table tr.confirm-delete:nth-child(odd) td,
-.confirm-delete{
-	background: red;
+table tr.selectedId:nth-child(odd) td,
+.selectedId{
+	background: rgb(255, 129, 63);
 	color:#fff;
 }
 
-div.confirm-delete{
-	color: red;
+div.selectedId{
+	color: rgb(255, 129, 63);
 	background:transparent;
 }
