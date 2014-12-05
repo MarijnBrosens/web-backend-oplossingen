@@ -33,7 +33,7 @@
 				<div class="confirm-edit">
 					<form action="<?= $_SERVER[ 'PHP_SELF' ] ?>" method="POST">
 						<ul>
-							<?php foreach ($brouwersEdit['data'][0] as $fieldname => $value): ?>
+							<?php foreach ($brouwersEdit['brouwers'][0] as $fieldname => $value): ?>
 								
 								<?php if ( $fieldname != "brouwernr" ): ?>
 									<li>
@@ -44,7 +44,7 @@
 								
 							<?php endforeach ?>
 						</ul>
-						<input type="hidden" value="<?= $brouwersEdit['data'][0]['brouwernr'] ?>" name="brouwernr">
+						<input type="hidden" value="<?= $brouwersEdit['brouwers'][0]['brouwernr'] ?>" name="brouwernr">
 						<input type="submit" name="edit" value="Wijzigen">
 					</form>
 				</div>

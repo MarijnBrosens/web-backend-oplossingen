@@ -51,9 +51,7 @@
 		}
 
 
-
-
-				if ( isset( $_POST[ 'editConfirm' ] ) )
+		if ( isset( $_POST[ 'editConfirm' ] ) )
 		{
 			$brouwersEdit	=	$db->updateQuery( '	SELECT * 
 													FROM brouwers 
