@@ -28,13 +28,7 @@
 			$selectedId		=	$_POST[ 'deleteConfirm' ];
 		}
 
-		if ( isset( $_POST[ 'editConfirm' ] ) )
-		{
-			$brouwersEdit	=	$db->updateQuery( '	SELECT * 
-													FROM brouwers 
-													WHERE brouwernr = :brouwernr',
-													array( ':brouwernr' => $_POST[ 'editConfirm' ] ) );
-		}
+
 
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
 		$db 		= 	new Database( $connection );
@@ -54,6 +48,17 @@
 		else
 		{
 			Message::setMessage( 'Deze record kon niet verwijderd worden. ', 'error');
+		}
+
+
+
+
+				if ( isset( $_POST[ 'editConfirm' ] ) )
+		{
+			$brouwersEdit	=	$db->updateQuery( '	SELECT * 
+													FROM brouwers 
+													WHERE brouwernr = :brouwernr',
+													array( ':brouwernr' => $_POST[ 'editConfirm' ] ) );
 		}
 
 
