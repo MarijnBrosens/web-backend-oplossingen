@@ -70,6 +70,7 @@
 									'brouwers' 			=> $brouwers,
 									'deleteConfirm'		=> $deleteConfirm,
 									'editConfirm'		=> $editConfirm,
+									'brouwersEdit'		=> $brouwersEdit,
 									'selectedId'		=> $selectedId) );
 
 	view( 'footer.view.php' );
