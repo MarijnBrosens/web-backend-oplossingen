@@ -53,7 +53,7 @@
 			}
 			else
 			{
-				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' kon niet uitgevoerd worden. Probeer opnieuw. Bij aanhoudende problemen, contacteer de <a href="mailto:bilgates@microsoft.com">systeembeheerder</a>.' , 'error');
+				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' kon niet uitgevoerd worden. Probeer opnieuw. Bij aanhoudende problemen, contacteer de <a href="mailto:marijnbrosens16@gmail.com">systeembeheerder</a>.' , 'error');
 			}		
 
 		}
