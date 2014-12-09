@@ -5,6 +5,8 @@
 	$deleteId			=	false;
 	$brouwersEdit		=	false;
 
+	$updateSuccessful 	= 	false;
+
 	//opdracht-Security-login bekijken
 	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
 
@@ -18,8 +20,9 @@
 		include( $file );
 	}
 
-try{
-		$db = new PDO('mysql:host=localhost;dbname=bieren', 'root', '' ); // Connectie maken
+	try{
+		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
+		$db 		= 	new Database( $connection );
 
 		if ( isset( $_POST[ 'confirm-delete' ] ) )
 		{
@@ -29,50 +32,39 @@ try{
 
 		if ( isset( $_POST[ 'confirm-edit' ] ) )
 		{
-			/* 	
-				Haal data en fieldnames op voor specifieke brouwer 
-				dmv een zelfgeschreven functie query() 
-			*/
-			$brouwersEdit	=	query( $db, 'SELECT * FROM brouwers WHERE brouwernr = :brouwernr', array( ':brouwernr' => $_POST[ 'confirm-edit' ] ) );
+			$brouwersEdit	=	$db->query( 'SELECT * FROM brouwers WHERE brouwernr = :brouwernr', array( ':brouwernr' => $_POST[ 'confirm-edit' ] ) );
 		}
 
 		if ( isset( $_POST[ 'edit' ] ) )
 		{
-			/* 	
-				Haal data en fieldnames op voor specifieke brouwer 
-				dmv een zelfgeschreven functie query() 
-			*/
+			$updateQuery	=	$db->updateQuery('UPDATE brouwers
+													SET brnaam 			=	:brnaam,
+														adres			=	:adres,
+														postcode		=	:postcode,
+														gemeente		=	:gemeente,
+														omzet			=	:omzet
+													WHERE brouwernr		= :brouwernr
+													LIMIT 1');
 
-			$updateQuery	=	'UPDATE brouwers
-									SET brnaam 			=	:brnaam,
-										adres			=	:adres,
-										postcode		=	:postcode,
-										gemeente		=	:gemeente,
-										omzet			=	:omzet
-									WHERE brouwernr		= :brouwernr
-									LIMIT 1';
-
-			$statement = $db->prepare( $updateQuery );
+			//$statement = $db->prepare( $updateQuery );
 			
-			$statement->bindValue( ":brouwernr",  	$_POST[ 'brouwernr' ] );						
-			$statement->bindValue( ":brnaam",  		$_POST[ 'brnaam' ] );						
-			$statement->bindValue( ":adres",  		$_POST[ 'adres' ] );						
-			$statement->bindValue( ":postcode",  	$_POST[ 'postcode' ] );						
-			$statement->bindValue( ":gemeente",  	$_POST[ 'gemeente' ] );						
-			$statement->bindValue( ":omzet",  		$_POST[ 'omzet' ] );
+			// $statement->bindValue( ":brouwernr",  	$_POST[ 'brouwernr' ] );						
+			// $statement->bindValue( ":brnaam",  		$_POST[ 'brnaam' ] );						
+			// $statement->bindValue( ":adres",  		$_POST[ 'adres' ] );						
+			// $statement->bindValue( ":postcode",  	$_POST[ 'postcode' ] );						
+			// $statement->bindValue( ":gemeente",  	$_POST[ 'gemeente' ] );						
+			// $statement->bindValue( ":omzet",  		$_POST[ 'omzet' ] );
 
-			$updateSuccessful	=	$statement->execute();
+			//$updateSuccessful	=	$statement->execute();
 
 			if ( $updateSuccessful )
 			{
-				$message['type']	=	'success';
-				$message['text']	=	'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' succesvol uitgevoerd.';
+				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' succesvol uitgevoerd.' , 'ok');
 			}
 			else
 			{
-				$message['type']	=	'error';
-				$message['text']	=	'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' kon niet uitgevoerd worden. Probeer opnieuw. Bij aanhoudende problemen, contacteer de <a href="mailto:bilgates@microsoft.com">systeembeheerder</a>.';
-			}			
+				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' kon niet uitgevoerd worden. Probeer opnieuw. Bij aanhoudende problemen, contacteer de <a href="mailto:bilgates@microsoft.com">systeembeheerder</a>.' , 'error');
+			}		
 
 		}
 
@@ -97,7 +89,7 @@ try{
 			}
 		}
 
-		$brouwersQuery	=	query( $db, 'SELECT * FROM brouwers' ) ;
+		$brouwersQuery	=	$db->query( 'SELECT * FROM brouwers' ) ;
 
 		$brouwersFieldnames	= 	$brouwersQuery[ 'fieldnames' ];
 		$brouwers			=	$brouwersQuery[ 'data' ];
@@ -106,42 +98,6 @@ try{
 
 		Message::setMessage( 'de connectie kon niet worden gemaakt' , 'error');
 	}
-
-		function query( $db, $query, $tokens = false )
-		{
-			$statement = $db->prepare( $query );
-			
-			if ( $tokens )
-			{
-				foreach ( $tokens as $token => $tokenValue )
-				{
-					$statement->bindParam( $token, $tokenValue );
-				}
-			}
-
-			$statement->execute();
-
-			/*  Veldnamen ophalen*/
-			$fieldnames	=	array();
-
-			for ( $fieldNumber = 0; $fieldNumber < $statement->columnCount(); ++$fieldNumber )
-			{
-				$fieldnames[]	=	$statement->getColumnMeta( $fieldNumber )['name'];
-			}
-
-			/*De brouwer-data ophalen*/
-			$data	=	array();
-
-			while( $row = $statement->fetch( PDO::FETCH_ASSOC ) )
-			{
-				$data[]	=	$row;
-			}
-
-			$returnArray['fieldnames']	=	$fieldnames;
-			$returnArray['data']		=	$data;
-
-			return $returnArray;
-		}
 
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-delete', 
 									'messages' 	=> Message::getMessages() ) );
