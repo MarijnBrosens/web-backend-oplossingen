@@ -9,7 +9,7 @@
 			$this->db	=	$db;
 		}
 
-		public function query( $queryString , $tokens = false )
+		public function selectQuery( $queryString , $tokens = false )
 		{
 
 			$statement = $this->db->prepare( $queryString );

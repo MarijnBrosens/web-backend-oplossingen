@@ -33,7 +33,7 @@
 
 		if ( isset( $_POST[ 'confirm-edit' ] ) )
 		{
-			$brouwersEdit	=	$db->query( 'SELECT * FROM brouwers WHERE brouwernr = :brouwernr', array( ':brouwernr' => $_POST[ 'confirm-edit' ] ) );
+			$brouwersEdit	=	$db->selectQuery( 'SELECT * FROM brouwers WHERE brouwernr = :brouwernr', array( ':brouwernr' => $_POST[ 'confirm-edit' ] ) );
 		}
 
 		if ( isset( $_POST[ 'edit' ] ) )
@@ -46,17 +46,6 @@
 														omzet			=	:omzet
 													WHERE brouwernr		= :brouwernr
 													LIMIT 1');
-
-			//$statement = $db->prepare( $updateQuery );
-			
-			// $statement->bindValue( ":brouwernr",  	$_POST[ 'brouwernr' ] );						
-			// $statement->bindValue( ":brnaam",  		$_POST[ 'brnaam' ] );						
-			// $statement->bindValue( ":adres",  		$_POST[ 'adres' ] );						
-			// $statement->bindValue( ":postcode",  	$_POST[ 'postcode' ] );						
-			// $statement->bindValue( ":gemeente",  	$_POST[ 'gemeente' ] );						
-			// $statement->bindValue( ":omzet",  		$_POST[ 'omzet' ] );
-
-			//$updateSuccessful	=	$statement->execute();
 
 			if ( $updateSuccessful )
 			{
@@ -74,8 +63,6 @@
 			$deleteQuery	=	$db->deleteQuery('	DELETE FROM brouwers
 													WHERE brouwernr = :brouwernr');
 
-			echo $deleteQuery;
-
 			if ( $isDeleted )
 			{
 				Message::setMessage( 'Deze record is succesvol verwijderd.' , 'error');
@@ -86,7 +73,7 @@
 			}
 		}
 
-		$brouwersQuery	=	$db->query( 'SELECT * FROM brouwers' ) ;
+		$brouwersQuery	=	$db->selectQuery( 'SELECT * FROM brouwers' ) ;
 
 		$brouwersFieldnames	= 	$brouwersQuery[ 'fieldnames' ];
 		$brouwers			=	$brouwersQuery[ 'data' ];
