@@ -62,6 +62,17 @@
 			return $updateSuccessful;
 		}
 
+		public function deleteQuery( $deleteQueryString , $tokens = false)
+		{
+			$deleteStatement = $this->db->prepare( $deleteQueryString );
+
+			$deleteStatement->bindValue( ':brouwernr', $_POST['delete'] );
+
+			$isDeleted 	=	$deleteStatement->execute();
+
+			return $isDeleted;
+		}
+
 
 	}
 

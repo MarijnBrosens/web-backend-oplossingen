@@ -6,6 +6,7 @@
 	$brouwersEdit		=	false;
 
 	$updateSuccessful 	= 	false;
+	$isDeleted			=	false;
 
 	//opdracht-Security-login bekijken
 	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
@@ -37,7 +38,7 @@
 
 		if ( isset( $_POST[ 'edit' ] ) )
 		{
-			$updateQuery	=	$db->updateQuery('UPDATE brouwers
+			$updateQuery	=	$db->updateQuery('	UPDATE brouwers
 													SET brnaam 			=	:brnaam,
 														adres			=	:adres,
 														postcode		=	:postcode,
@@ -70,14 +71,10 @@
 
 		if ( isset( $_POST['delete'] ) )
 		{
-			$deleteQuery	=	'DELETE FROM brouwers
-									WHERE brouwernr = :brouwernr';
+			$deleteQuery	=	$db->deleteQuery('	DELETE FROM brouwers
+													WHERE brouwernr = :brouwernr');
 
-			$deleteStatement = $db->prepare( $deleteQuery );
-
-			$deleteStatement->bindValue( ':brouwernr', $_POST['delete'] );
-
-			$isDeleted 	=	$deleteStatement->execute();
+			echo $deleteQuery;
 
 			if ( $isDeleted )
 			{
