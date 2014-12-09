@@ -39,14 +39,12 @@
 
 		if ( $deleteId)
 		{
-			Message::setMessage( $deleteId,'ok');
+			Message::setMessage( 'deleted','ok');
 		}
 		else
 		{
 			Message::setMessage( 'Deze record kon niet verwijderd worden. ', 'error');
 		}
-
-
 
 	} catch ( PDOException $e ) {
 
