@@ -1,12 +1,6 @@
 <?php
 
 	$message			=	false;
-	$deleteConfirm		=	false;
-	$deleteId			=	false;
-	$brouwersEdit		=	false;
-
-	$updateSuccessful 	= 	false;
-	$isDeleted			=	false;
 
 	//opdracht-Security-login bekijken
 	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
@@ -23,65 +17,96 @@
 
 	try{
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
-		$db 		= 	new Database( $connection );
+		
+		$orderColumn	=	'bieren.biernr';
+		$order			=	'ASC';
 
-		if ( isset( $_POST[ 'confirm-delete' ] ) )
+		if ( isset( $_GET[ 'orderBy' ] ) )
 		{
-			$deleteConfirm	=	true;
-			$deleteId		=	$_POST[ 'confirm-delete' ];
+			$orderArray		=	explode( '-', $_GET[ 'orderBy' ] );
+			$orderColumn	=	$orderArray[ 0 ];
+
+			$order		=	$orderArray[ 1 ];
 		}
 
-		if ( isset( $_POST[ 'confirm-edit' ] ) )
+		$orderQuery		=	'ORDER BY ' . $orderColumn . ' ' . $order;
+
+		// Om ASC-ASC-ASC-ASC val tegen te gaan
+		// Om DESC-DESC-DESC-DESC val tegen te gaan
+		// OM het omgekeerde (asc tonen ipv desc) tegen te gaan
+		// OM het omgekeerde (desc tonen ipv asc) tegen te gaan
+		if ( isset( $_GET[ 'orderBy' ] ) )
 		{
-			$brouwersEdit	=	$db->selectQuery( 'SELECT * FROM brouwers WHERE brouwernr = :brouwernr', array( ':brouwernr' => $_POST[ 'confirm-edit' ] ) );
+			$order = ( $orderArray[ 1 ] != 'DESC') ? 'DESC' 	:	'ASC';
 		}
 
-		if ( isset( $_POST[ 'edit' ] ) )
-		{
-			$updateQuery	=	$db->updateQuery('	UPDATE brouwers
-													SET brnaam 			=	:brnaam,
-														adres			=	:adres,
-														postcode		=	:postcode,
-														gemeente		=	:gemeente,
-														omzet			=	:omzet
-													WHERE brouwernr		= :brouwernr
-													LIMIT 1');
+		$query	=	'SELECT bieren.biernr,
+							bieren.naam,
+							brouwers.brnaam,
+							soorten.soort,
+							bieren.alcohol 
+						FROM bieren 
+							INNER JOIN brouwers
+							ON bieren.brouwernr	= brouwers.brouwernr
+							INNER JOIN soorten
+							ON bieren.soortnr = soorten.soortnr '
+							. $orderQuery;
 
-			if ( $updateSuccessful )
-			{
-				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' succesvol uitgevoerd.' , 'ok');
-			}
-			else
-			{
-				Message::setMessage( 'Update op de brouwer ' . $_POST[ 'brnaam' ] . ' kon niet uitgevoerd worden. Probeer opnieuw. Bij aanhoudende problemen, contacteer de <a href="mailto:marijnbrosens16@gmail.com">systeembeheerder</a>.' , 'error');
-			}		
+		$bierenQuery	= 	new Database( $connection , $query);
 
-		}
+		var_dump($bierenQuery);
 
-		if ( isset( $_POST['delete'] ) )
-		{
-			$deleteQuery	=	$db->deleteQuery('	DELETE FROM brouwers
-													WHERE brouwernr = :brouwernr');
-
-			if ( $isDeleted )
-			{
-				Message::setMessage( 'Deze record is succesvol verwijderd.' , 'error');
-			}
-			else
-			{
-				Message::setMessage( 'Deze record kon niet verwijderd worden.' , 'error');
-			}
-		}
-
-		$brouwersQuery	=	$db->selectQuery( 'SELECT * FROM brouwers' ) ;
-
-		$brouwersFieldnames	= 	$brouwersQuery[ 'fieldnames' ];
-		$brouwers			=	$brouwersQuery[ 'data' ];
+		$bierenFieldnames		= 	$bierenQuery[ 'fieldnames' ];
+		$bierenCleanFieldnames	= 	processFieldnames( $bierenFieldnames );
+		$bieren					=	$bierenQuery[ 'data' ];
 
 	} catch ( PDOException $e ) {
 
 		Message::setMessage( 'de connectie kon niet worden gemaakt' , 'error');
 	}
+
+
+
+
+	function processFieldnames( $array )
+	{
+
+		$cleanFieldnames	=	array();
+
+		foreach( $array as $value )
+		{
+			switch( $value )
+			{
+				case "biernr":
+					$name	=	"Biernummer (PK)";
+					break;
+				case "naam":
+					$name	=	"Bier";
+					break;
+				case "brnaam":
+					$name	=	"Brouwer";
+					break;
+				case "soort":
+					$name	=	"Soort";
+					break;
+				case "alcohol":
+					$name	=	"Alcoholpercentage";
+					break;
+				default:
+					$name	=	$value;
+			}
+
+			$cleanFieldnames[ ]	=	$name;
+		}
+
+		return $cleanFieldnames;
+	}
+
+
+
+
+
+
 
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-delete', 
 									'messages' 	=> Message::getMessages() ) );
