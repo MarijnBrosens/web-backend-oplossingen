@@ -2,16 +2,16 @@
 
 	class Database{
 
-/*		private $db;
+		private $db;
 
 		public function __construct( $db )
 		{
 			$this->db	=	$db;
-		}*/
+		}
 
 		function query( $query, $tokens = false )
 		{
-			$statement = $db->prepare( $query );
+			$statement = $this->db->prepare( $query );
 			
 			if ( $tokens )
 			{
