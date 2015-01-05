@@ -7,9 +7,9 @@
 		public function __construct( $db )
 		{
 			$this->db	=	$db;
-		}
-*/
-		function query( $db, $query, $tokens = false )
+		}*/
+
+		function query( $query, $tokens = false )
 		{
 			$statement = $db->prepare( $query );
 			

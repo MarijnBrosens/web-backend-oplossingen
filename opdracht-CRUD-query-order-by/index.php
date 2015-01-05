@@ -17,6 +17,7 @@
 
 	try{
 		$connection	=	new PDO( 'mysql:host=localhost;dbname=bieren', 'root', '' );
+		$db 		= 	new Database( $connection );
 		
 		$orderColumn	=	'bieren.biernr';
 		$order			=	'ASC';
@@ -52,7 +53,7 @@
 							ON bieren.soortnr = soorten.soortnr '
 							. $orderQuery;
 
-		$bierenQuery	= 	new Database( $connection , $query);
+		$bierenQuery =  $db->query($query);
 
 		var_dump($bierenQuery);
 
