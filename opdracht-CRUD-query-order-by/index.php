@@ -2,7 +2,6 @@
 
 	$message			=	false;
 
-	//opdracht-Security-login bekijken
 	spl_autoload_register(  function( $class ) { include_once( $class .'.php' ); } );
 
 	function view( $file, $data = false )
@@ -53,9 +52,9 @@
 							ON bieren.soortnr = soorten.soortnr '
 							. $orderQuery;
 
-		$bierenQuery =  $db->query($query);
+		$bierenQuery =  $db->query( $query );
 
-		var_dump($bierenQuery);
+		//var_dump($bierenQuery);
 
 		$bierenFieldnames		= 	$bierenQuery[ 'fieldnames' ];
 		$bierenCleanFieldnames	= 	processFieldnames( $bierenFieldnames );
@@ -65,9 +64,6 @@
 
 		Message::setMessage( 'de connectie kon niet worden gemaakt' , 'error');
 	}
-
-
-
 
 	function processFieldnames( $array )
 	{
@@ -103,20 +99,14 @@
 		return $cleanFieldnames;
 	}
 
-
-
-
-
-
-
 	view( 'header.view.php', array( 'title' 	=> 'Opdracht-CRUD-delete', 
 									'messages' 	=> Message::getMessages() ) );
 
-	view( 'body.view.php', array(	'brouwersFieldnames'=> $brouwersFieldnames,
-									'brouwers' 			=> $brouwers,
-									'deleteConfirm'		=> $deleteConfirm,
-									'brouwersEdit'		=> $brouwersEdit,
-									'deleteId'			=> $deleteId) );
+	view( 'body.view.php', array(	'bierenCleanFieldnames'	=> $bierenCleanFieldnames,
+									'order'					=> $order,
+									'bierenFieldnames'		=> $bierenFieldnames,
+									'orderColumn'			=> $orderColumn, 
+									'bieren' 				=> $bieren) );
 
 	view( 'footer.view.php' );
 
