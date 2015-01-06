@@ -55,6 +55,39 @@
 						                      	FROM users
 												WHERE email = :email', array(':email' => $email ) );	
 
+			if (  isset( $checkUserDuplicate['data'][ 0 ]) ) {
+				// user bestaat
+
+				header('location: ' . $formLocatie );
+
+				
+			} else {
+
+
+				$connection	=	new PDO( 'mysql:host=localhost;dbname=db_secure_login', 'root', '' );
+
+				$db = new Database( $connection );	
+			
+				$checkUserDuplicate = $db->query(' INSERT INTO users
+                  (
+                    email,
+                    salt,
+                    hashed_password,
+                    last_login_time
+                  )
+                  VALUES
+                  (
+                    '".$connection->real_escape_string($_POST['email'])."',
+                    '".$salt."',
+                    '".$hashedPassword."',
+                    NOW()
+                  )") ');
+
+				header('location: dashboard.php');
+
+
+			}
+
 		}
 
 
