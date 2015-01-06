@@ -1,12 +1,16 @@
 <?php
+	
+	session_start();
 
 	$message			=	false;
 
 
 	// generate password
-	if(isset($_POST['generatePassword'])) {
+	if(isset($_POST['generate-Password'])) {
 
 	    $generatedPassword = generatePassword(20);
+
+	    var_dump($generatedPassword);
 
 	    $_SESSION['registration']['email']      = $_POST['email'];
 	    $_SESSION['registration']['password']   = $generatedPassword;
@@ -21,6 +25,7 @@
 		$chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_-=+;:,.?ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	    $password = substr(str_shuffle($chars), 0, $length);
 
+	    var_dump($password);
 	    return $password;
 
 	}

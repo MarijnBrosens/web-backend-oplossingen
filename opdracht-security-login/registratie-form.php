@@ -1,7 +1,19 @@
 <?php 
 
-$email      = '';
-$password   = '';
+    session_start();
+    
+    $email      = '';
+    $password   = '';
+
+    if (isset($_SESSION['registration'])) {
+
+        $email      = $_SESSION['registration']['email'];
+        $password   = $_SESSION['registration']['password'];
+
+    }
+
+        var_dump($email);
+        var_dump($password);
 
  ?>
 
@@ -24,12 +36,13 @@ $password   = '';
             <ul>
                 <li>
                     <label for="email">e-mail</label>
-                    <input type="text" id="email" placeholder="Email">
+                    <input type="text" name="email" id="email" placeholder="Email">
                 </li>
                 <li>
                     <label for="password">paswoord</label>
+
                     <input type="<?= ($password != '') ? 'text' : 'password' ?>" name="password" value="<?= $password ?>" placeholder="Password" >
-                    <input type="submit" name="generatePassword" value="Genereer een paswoord">
+                    <input type="submit" name="generate-Password" value="Genereer een paswoord">
                 </li>
             </ul>
             <input type="submit" value="Registreer">
