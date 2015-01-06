@@ -1,6 +1,11 @@
 <?php 
 
     session_start();
+
+    function __autoload( $classname )
+    {
+        require_once( $classname . '.php' );
+    }    
     
     $email      = '';
     $password   = '';
@@ -12,8 +17,8 @@
 
     }
 
-        var_dump($email);
-        var_dump($password);
+    var_dump($email);
+    var_dump($password);
 
  ?>
 

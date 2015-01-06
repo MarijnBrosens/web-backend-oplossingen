@@ -2,26 +2,43 @@
 
 	class Message
 	{
-		public static function setMessage( $text, $type )
-		{
-			$message[ 'text' ]		=	$text;
-			$message[ 'type' ]		=	$type;
+		private $type;
+		private $text;
 
-			$_SESSION['messages'][]	=	$message;
+		public function __construct( $type, $text )
+		{
+			$this->type	=	$type;
+			$this->text	=	$text;
+
+			$this->addMessageToSession();
 		}
 
-		public static function getMessages( $id = false )
+		private function addMessageToSession()
 		{
-			$messages	=	false;
+			$_SESSION[ 'message' ][ 'type' ]	=	$this->type;
+			$_SESSION[ 'message' ][ 'text' ]	=	$this->text;
+		}
 
-			if ( isset( $_SESSION['messages'] ) )
+		private function removeMessageFromSession()
+		{
+			unset( $_SESSION[ 'message' ] );
+		}
+
+		public static function getMessage()
+		{
+			$message	=	false;
+
+			if ( isset( $_SESSION[ 'message' ] ) )
 			{
-				$messages	=	$_SESSION[ 'messages' ];
-				unset( $_SESSION[ 'messages' ] );
+				$message[ 'type' ]	=	$_SESSION[ 'message' ][ 'type' ];
+				$message[ 'text' ]	=	$_SESSION[ 'message' ][ 'text' ];
+				
+				self::removeMessageFromSession( );
 			}
 
-			return $messages;
+			return $message;
 		}
+
 	}
 
 ?>
