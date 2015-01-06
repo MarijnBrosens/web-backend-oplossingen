@@ -7,11 +7,12 @@
 		require_once( $classname . '.php' );
 	}
 
+	$formLocatie = 'registratie-form.php';
 
-	$message			=	false;
 
 
-	// generate password
+
+	// password maken
 	if(isset($_POST['generate-Password'])) {
 
 	    $generatedPassword = generatePassword(20);
@@ -21,18 +22,41 @@
 	    $_SESSION['registration']['email']      = $_POST['email'];
 	    $_SESSION['registration']['password']   = $generatedPassword;
 
-	    header('location: registratie-form.php');
-	    
-	} elseif ( isset( $_POST[ 'submit' ] ) ) {
+	    header('location: ' . $formLocatie);
+
+	} 
+
+
+
+	//registreren
+	if ( isset( $_POST[ 'submit' ] ) ) {
 
 		$email		=	$_POST[ 'email' ];
+		$_SESSION[ 'registration' ][ 'email' ]	= $email;
+
 		$password	=	$_POST[ 'password' ];
+		$salt           = uniqid( mt_rand() , true );
+    	$hashedPassword = crypt( $password , $salt );
 
-		$_SESSION[ 'registration' ][ 'email' ]		=	$email;
-		$_SESSION[ 'registration' ][ 'password' ]	=	$password;
+    	$_SESSION[ 'registration' ][ 'password' ]	    = $password;
+    	$_SESSION[ 'registration' ][ 'hashedPassword' ]	= $hashedPassword;
 
-		# Emailvalidatie
+
+		// Email check
 		$isEmail	=	filter_var( $email, FILTER_VALIDATE_EMAIL );
+
+		if ($isEmail) {
+			
+			$connection	=	new PDO( 'mysql:host=localhost;dbname=db_secure_login', 'root', '' );
+
+			$db = new Database( $connection );	
+			
+			$checkUserDuplicate = $db->query('	SELECT *
+						                      	FROM users
+												WHERE email = :email', array(':email' => $email ) );	
+
+		}
+
 
 	}	
 

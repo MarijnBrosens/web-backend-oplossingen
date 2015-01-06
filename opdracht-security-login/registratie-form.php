@@ -7,6 +7,12 @@
         require_once( $classname . '.php' );
     }    
     
+    if(isset($_SESSION['notification'])) {
+
+        $notification = $_SESSION['notification'];
+        
+    }
+
     $email      = '';
     $password   = '';
 
@@ -20,9 +26,7 @@
     var_dump($email);
     var_dump($password);
 
- ?>
-
-
+?>
 
 <!DOCTYPE html>
     <html>
@@ -34,6 +38,12 @@
         <link rel="stylesheet" href="../style.css">  
     </head>
     <body>  
+
+        <?php if ( isset ( $message ) ): ?>
+            <div class="modal <?= $message['type'] ?>">
+                <?= $message['text'] ?>
+            </div>
+        <?php endif ?>
 
         <h1>Registreren</h1>
 
