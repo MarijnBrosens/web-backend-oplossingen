@@ -35,8 +35,6 @@
 		<link rel="stylesheet" type="text/css" href="../style.css">
 	</head>
 	<body>
-
-		<h1>Dashboard</h1>
 		
 			<?php if ( isset ( $message ) ): ?>
 				<div class="modal <?= $message['type'] ?>">

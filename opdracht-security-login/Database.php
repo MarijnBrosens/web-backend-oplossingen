@@ -1,6 +1,7 @@
-<?php  
+<?php
 
-	class Database{
+	class Database
+	{
 
 		private $db;
 
@@ -9,16 +10,15 @@
 			$this->db	=	$db;
 		}
 
-		public function selectQuery( $queryString , $tokens = false )
+		public function query( $query, $tokens = false )
 		{
-
-			$statement = $this->db->prepare( $queryString );
+			$statement = $this->db->prepare( $query );
 			
 			if ( $tokens )
 			{
 				foreach ( $tokens as $token => $tokenValue )
 				{
-					$statement->bindParam( $token, $tokenValue );
+					$statement->bindValue( $token, $tokenValue );
 				}
 			}
 
@@ -45,35 +45,6 @@
 
 			return $returnArray;
 		}
-
-		public function updateQuery ( $updateQueryString , $tokens = false)
-		{
-			$statement = $this->db->prepare( $updateQueryString );
-
-			$statement->bindValue( ":brouwernr",  	$_POST[ 'brouwernr' ] );						
-			$statement->bindValue( ":brnaam",  		$_POST[ 'brnaam' ] );						
-			$statement->bindValue( ":adres",  		$_POST[ 'adres' ] );						
-			$statement->bindValue( ":postcode",  	$_POST[ 'postcode' ] );						
-			$statement->bindValue( ":gemeente",  	$_POST[ 'gemeente' ] );						
-			$statement->bindValue( ":omzet",  		$_POST[ 'omzet' ] );
-
-			$updateSuccessful	=	$statement->execute();
-
-			return $updateSuccessful;
-		}
-
-		public function deleteQuery( $deleteQueryString , $tokens = false)
-		{
-			$deleteStatement = $this->db->prepare( $deleteQueryString );
-
-			$deleteStatement->bindValue( ':brouwernr', $_POST['delete'] );
-
-			$isDeleted 	=	$deleteStatement->execute();
-
-			return $isDeleted;
-		}
-
-
 	}
 
 ?>

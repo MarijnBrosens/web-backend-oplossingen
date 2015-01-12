@@ -13,6 +13,7 @@
         
     }
 
+    $message    = Message::getMessage();
     $email      = '';
     $password   = '';
 
@@ -34,14 +35,14 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Untitled</title>
+        <title>Registratie-form</title>
         <link rel="stylesheet" href="../style.css">  
     </head>
     <body>  
 
-        <?php if ( isset ( $message ) ): ?>
-            <div class="modal <?= $message['type'] ?>">
-                <?= $message['text'] ?>
+        <?php if ( $message ): ?>
+            <div class="modal <?php echo $message['type'] ?>">
+                <?php echo $message['text'] ?>
             </div>
         <?php endif ?>
 
@@ -51,7 +52,7 @@
             <ul>
                 <li>
                     <label for="email">e-mail</label>
-                    <input type="text" name="email" id="email" placeholder="Email">
+                    <input type="text" name="email" id="email" placeholder="Email" value="<?= $email ?>">
                 </li>
                 <li>
                     <label for="password">paswoord</label>
@@ -60,6 +61,6 @@
                     <input type="submit" name="generate-Password" value="Genereer een paswoord">
                 </li>
             </ul>
-            <input type="submit" value="Registreer">
+            <input name="submit" type="submit" value="Registreer">
         </form>
     </body>

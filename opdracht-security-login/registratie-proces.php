@@ -31,65 +31,54 @@
 	//registreren
 	if ( isset( $_POST[ 'submit' ] ) ) {
 
-		$email		=	$_POST[ 'email' ];
-		$_SESSION[ 'registration' ][ 'email' ]	= $email;
+		$email			= $_POST[ 'email' ];
+		$password		= $_POST[ 'password' ];
 
-		$password	=	$_POST[ 'password' ];
+		/*
 		$salt           = uniqid( mt_rand() , true );
     	$hashedPassword = crypt( $password , $salt );
+    	*/
 
+		$_SESSION[ 'registration' ][ 'email' ]			= $email;
     	$_SESSION[ 'registration' ][ 'password' ]	    = $password;
     	$_SESSION[ 'registration' ][ 'hashedPassword' ]	= $hashedPassword;
 
 
 		// Email check
-		$isEmail	=	filter_var( $email, FILTER_VALIDATE_EMAIL );
+		$isEmail	=	filter_var( $email , FILTER_VALIDATE_EMAIL );
 
-		if ($isEmail) {
+		if ( $isEmail ) {
 			
 			$connection	=	new PDO( 'mysql:host=localhost;dbname=db_secure_login', 'root', '' );
 
 			$db = new Database( $connection );	
 			
-			$checkUserDuplicate = $db->query('	SELECT *
-						                      	FROM users
-												WHERE email = :email', array(':email' => $email ) );	
+			$userData	=	$db->query( '	SELECT * 
+											FROM users 
+											WHERE email = :email', 
+											array(':email' => $email ) );	
 
-			if (  isset( $checkUserDuplicate['data'][ 0 ]) ) {
+			if (  isset( $userData['data'][ 0 ]) ) {
 				// user bestaat
 
+				$userExistsError = new Message( "error", "De gebruiker met het e-mailadres " . $email . "komt reeds voor in onze database." ); 
 				header('location: ' . $formLocatie );
 
 				
 			} else {
 
 
-				$connection	=	new PDO( 'mysql:host=localhost;dbname=db_secure_login', 'root', '' );
+				$newUser = User::CreateNewUser( $connection , $email , $password );
 
-				$db = new Database( $connection );	
-			
-				$checkUserDuplicate = $db->query(' INSERT INTO users
-                  (
-                    email,
-                    salt,
-                    hashed_password,
-                    last_login_time
-                  )
-                  VALUES
-                  (
-                    '".$connection->real_escape_string($_POST['email'])."',
-                    '".$salt."',
-                    '".$hashedPassword."',
-                    NOW()
-                  )") ');
+				if ($newUser) {
 
-				header('location: dashboard.php');
-
+					$registratieSucces = new Message("success", "Welkom, u bent vanaf nu geregistreerd in onze app.");
+					header('location: dashboard.php');
+				}				
 
 			}
 
 		}
-
 
 	}	
 
