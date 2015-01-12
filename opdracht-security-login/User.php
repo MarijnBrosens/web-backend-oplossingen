@@ -56,7 +56,7 @@
 			$hashedEmail	=	hash( 'sha512', $salt . $email );
 			$cookieValue	=	$email . '##' . $hashedEmail;
 
-			$cookie	=	setcookie( 'authenticated', $cookieValue, time() + 3600 );
+			$cookie	=	setcookie( 'authenticated', $cookieValue, time() + 60 * 60 * 24 ); // 1dag ingelogd
 
 			return $cookie;
 		}
