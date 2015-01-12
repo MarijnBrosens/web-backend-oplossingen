@@ -42,10 +42,10 @@
 
 			$db = new Database( $connection );
 
-			$userData	=	$db->query( 'SELECT * 
-										FROM users 
-										WHERE email = :email', 
-										array(':email' => $email ) );
+			$userData	=	$db->query( '	SELECT * 
+											FROM users 
+											WHERE email = :email', 
+											array(':email' => $email ) );
 
 			if( isset( $userData['data'][0] ) )
 			{
@@ -53,7 +53,7 @@
 				var_dump( $userData['data'][0] );
 				# Controle of het paswoord correct is of niet
 				$salt 		= 	$userData['data'][0]['salt'];
-				$passwordDb = 	$userData['data'][0]['password'];
+				$passwordDb = 	$userData['data'][0]['hashed_password'];
 
 				$newlyHashedPassword = hash( 'sha512', $salt . $password);
 
@@ -72,7 +72,7 @@
 				else
 				{
 					$userExistsMessage	=	new Message('error', 'U kon niet ingelogd worden. Probeer opnieuw.');
-					header('location: ' . $loginFormName );
+					//header('location: ' . $loginFormName );
 				}
 			}
 			else

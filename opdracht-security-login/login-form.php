@@ -37,8 +37,8 @@
     }
     */
 
-    var_dump($email);
-    var_dump($password);
+    //var_dump($email);
+    //var_dump($password);
 
 ?>
 
