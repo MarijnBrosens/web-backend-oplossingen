@@ -10,8 +10,6 @@
 	$formLocatie = 'registratie-form.php';
 
 
-
-
 	// password maken
 	if(isset($_POST['generate-Password'])) {
 
@@ -26,22 +24,18 @@
 
 	} 
 
-
-
 	//registreren
-	if ( isset( $_POST[ 'submit' ] ) ) {
+	elseif ( isset( $_POST[ 'submit' ] ) ) {
 
 		$email			= $_POST[ 'email' ];
 		$password		= $_POST[ 'password' ];
-
-		/*
-		$salt           = uniqid( mt_rand() , true );
-    	$hashedPassword = crypt( $password , $salt );
-    	*/
+		
+		/*$salt           = uniqid( mt_rand() , true );
+    	$hashedPassword = crypt( $password , $salt );    	*/
 
 		$_SESSION[ 'registration' ][ 'email' ]			= $email;
     	$_SESSION[ 'registration' ][ 'password' ]	    = $password;
-    	$_SESSION[ 'registration' ][ 'hashedPassword' ]	= $hashedPassword;
+    	//$_SESSION[ 'registration' ][ 'hashedPassword' ]	= $hashedPassword;
 
 
 		// Email check
@@ -70,13 +64,25 @@
 
 				$newUser = User::CreateNewUser( $connection , $email , $password );
 
-				if ($newUser) {
+				if ( $newUser ) {
 
-					$registratieSucces = new Message("success", "Welkom, u bent vanaf nu geregistreerd in onze app.");
-					header('location: dashboard.php');
+					$registrationSuccess = new Message("success", "Welkom, u bent vanaf nu geregistreerd in onze app.");
+					header( 'location: dashboard.php' );
 				}				
 
 			}
+
+		} elseif ( $password == "" ) {
+
+			new Message( "error", "Dit is geen geldig paswoord. Vul een geldig paswoord in." ); 
+			
+			header('location: ' . $formLocatie );
+
+		} else {
+
+			$emailError = new Message( "error", "Dit is geen geldig e-mailadres. Vul een geldig e-mailadres in." ); 
+			
+			header('location: ' . $formLocatie );
 
 		}
 
@@ -84,12 +90,12 @@
 
 
 	//willekeurig passwoord maken - geef een lengte mee van passwoord
-	function generatePassword($length){
+	function generatePassword( $length ){
 
 		$chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_-=+;:,.?ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    $password = substr(str_shuffle($chars), 0, $length);
+	    $password = substr( str_shuffle( $chars ), 0, $length );
 
-	    var_dump($password);
+	    var_dump( $password );
 	    return $password;
 
 	}

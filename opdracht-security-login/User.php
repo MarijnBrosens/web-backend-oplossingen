@@ -15,8 +15,8 @@
 											( 	
 												email,
 												salt,
-												password,
-												lastlogin
+												hashed_password,
+												last_login_time
 											)
 									VALUES (	
 												:email,
@@ -76,7 +76,7 @@
 				$userData	=	$db->query( 'SELECT * 
 											FROM users 
 											WHERE email = :email', 
-										array(':email' => $email ) );
+											array(':email' => $email ) );
 
 				if( isset( $userData['data'][0] ) )
 				{
