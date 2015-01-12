@@ -63,4 +63,5 @@
             </ul>
             <input name="submit" type="submit" value="Registreer">
         </form>
+        <p><a href="login-form.php">Login</a></p>
     </body>
