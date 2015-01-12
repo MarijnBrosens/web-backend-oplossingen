@@ -72,7 +72,7 @@
 				else
 				{
 					$userExistsMessage	=	new Message('error', 'U kon niet ingelogd worden. Probeer opnieuw.');
-					//header('location: ' . $loginFormName );
+					header('location: ' . $loginFormName );
 				}
 			}
 			else
