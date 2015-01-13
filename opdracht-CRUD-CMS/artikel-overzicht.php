@@ -33,7 +33,6 @@
 
 	$artikelFieldNames			= 	$alleArtikelsQuery[ 'fieldnames' ];
 	$artikels					=	$alleArtikelsQuery[ 'data' ];
-	$artikelsTitel				=	$alleArtikelsQuery[ 'data' ][0]['titel'];
 
 	//var_dump($artikels);
 
@@ -75,29 +74,40 @@
         </ul>
 
 		<div class="row">
+			<?php if ( $artikels ): ?>		<!--als er artikels zijn-->		
+			
+				<?php foreach ( $artikels as $key => $artikel ): ?>
 
-			<?php foreach ( $artikels as $key => $artikel ): ?>
+					<div class="col-lg-4">
 
-				<div class="col-lg-4">
+						<article class="<?= ( $artikels[$key]['is_active'] == 0 ) ? 'onactief' : 'actief'  ?>">
 
-					<article class="<?= ($artikels[$key]['is_active'] == 0) ? 'onactief' : 'actief'  ?>">
-						<h2>Titel: <?php echo $artikels[$key]['titel']  ?>				</h2>
-						<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>			</p>
-						<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?>	</p>
-						<p>Datum: <?php echo $artikels[$key]['datum']  ?>				</p>	
+							<h2>Titel: <?php echo $artikels[$key]['titel']  ?>				</h2>
+							<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>			</p>
+							<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?>	</p>
+							<p>Datum: <?php echo $artikels[$key]['datum']  ?>				</p>	
+							<p>Is_deleted: <?php echo $artikels[$key]['is_archived']  ?>		</p>
 
-						<hr>
+							<hr>
 
-						<p>
-	                        <a href="artikel-wijzigen-form.php?artikel=<?= ( $artikels[$key]['id'] ) ?>">artikel wijzigen</a> |
-	                        <a href="artikel-activeren.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"> <?= ( $artikels[$key]['is_active'] == 0) ? 'artikel activeren' : 'artikel deactiveren'  ?></a> |
-	                        <a href="artikel-verwijderen.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"><?= ( $artikels[$key]['is_archived'] == 0) ? 'artikel verwijderen' : 'artikel uit archief halen'  ?></a>
-	                    </p>					
-					</article>	
-					
+							<p>
+		                        <a href="artikel-wijzigen-form.php?artikel=<?= ( $artikels[$key]['id'] ) ?>">artikel wijzigen</a> |
+		                        <a href="artikel-activeren.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"> <?= ( $artikels[$key]['is_active'] == 0) ? 'artikel activeren' : 'artikel deactiveren'  ?></a> |
+		                        <a href="artikel-verwijderen.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"><?= ( $artikels[$key]['is_archived'] == 0) ? 'artikel verwijderen' : 'artikel uit archief halen'  ?></a>
+		                    </p>					
+						</article>	
+						
+					</div>
+
+				<?php endforeach ?>	
+
+			<?php else : ?>
+
+				<div class="col-lg-12">
+					<p>Geen artikels gevonden: maak een nieuw artikel aan.</p>
 				</div>
 
-			<?php endforeach ?>	
+			<?php endif ?>
 
 		</div>
 

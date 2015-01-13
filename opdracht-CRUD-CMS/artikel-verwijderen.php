@@ -15,14 +15,14 @@
 
 	$artikelArchiveren	= $db->query( "	UPDATE 	artikels
 										SET 	is_archived =	!is_archived
-										WHERE 	(id = $toggleArticleId)");
+										WHERE 	( id = $toggleArticleId )");
 
 
 	var_dump($toggleArticleId);
 
-	if(isset($_GET['artikel'])) {
+	if( isset($_GET['artikel']) ) {
 
-		new Message( "ok", "artikel succesvol geactiveerd (getoggled)." ); 
+		new Message( "ok", "artikel succesvol geactiveerd ( getoggled )." ); 
 		header( 'location: artikel-overzicht.php' );
 
 	} else {
