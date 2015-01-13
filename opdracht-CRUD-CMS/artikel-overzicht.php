@@ -80,7 +80,7 @@
 
 				<div class="col-lg-4">
 
-					<article>
+					<article class="<?= ($artikels[$key]['is_active'] == 0) ? 'onactief' : 'actief'  ?>">
 						<h2>Titel: <?php echo $artikels[$key]['titel']  ?>				</h2>
 						<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>			</p>
 						<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?>	</p>
@@ -89,9 +89,9 @@
 						<hr>
 
 						<p>
-	                        <a href="edit-artikel-form.php?article=<?= $key ?>">Edit</a> |
-	                        <a href="activate-artikel.php?article=<?= $key ?>"> <?= ($artikels[$key]['is_active'] == 0) ? '' : 'de'  ?>Activate</a> |
-	                        <a href="delete-artikel.php?article=<?= $key ?>">Delete</a>
+	                        <a href="artikel-wijzigen-form.php?artikel=<?= ($artikels[$key]['id']) ?>">artikel wijzigen</a> |
+	                        <a href="artikel-activeren.php?artikel=<?= ($artikels[$key]['id']) ?>"> <?= ( $artikels[$key]['is_active'] == 0) ? 'artikel activeren' : 'artikel deactiveren'  ?></a> |
+	                        <a href="delete-artikel.php?artikel=<?= ($artikels[$key]['id']) ?>">artikel verwijderen</a>
 	                    </p>					
 					</article>	
 					

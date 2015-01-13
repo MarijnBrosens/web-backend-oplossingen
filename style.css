@@ -168,3 +168,10 @@ ul{
 article{
 	margin-bottom: 30px;
 }
+
+article.activate{
+	background:#fff;
+}
+article.onactief{
+	background:#eee;
+}
