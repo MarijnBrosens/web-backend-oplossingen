@@ -42,7 +42,7 @@
 		} else {
 
 			new Message( "error", "Probleem bij het wijzigen" ); 
-			header('location: artikel-overzicht.php');
+			header('location: artikel-wijzigen-form.php');
 
 		}
 
