@@ -7,6 +7,7 @@
 		require_once( $classname . '.php' );
 	}
 
+	$message    = Message::getMessage();
 
 	if(!isset($_COOKIE['authenticated'])) {
 

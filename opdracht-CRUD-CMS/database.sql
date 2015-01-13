@@ -17,11 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `db_secure_login`
+-- Database: `db_CRUD_CMS`
 --
 
-CREATE DATABASE IF NOT EXISTS `db_secure_login` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `db_secure_login`;
+CREATE DATABASE IF NOT EXISTS `db_CRUD_CMS` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_CRUD_CMS`;
 
 -- --------------------------------------------------------
 

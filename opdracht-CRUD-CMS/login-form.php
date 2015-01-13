@@ -10,7 +10,7 @@
         require_once( $classname . '.php' );
     }    
 
-    $connection = new PDO(  'mysql:host=localhost;dbname=db_secure_login', 'root', '' );
+    $connection = new PDO(  'mysql:host=localhost;dbname=db_CRUD_CMS', 'root', '' );
     
     if ( User::validate( $connection )) {
 
