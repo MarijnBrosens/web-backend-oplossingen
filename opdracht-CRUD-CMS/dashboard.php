@@ -18,9 +18,6 @@
 	// uitloggen
 	if(isset($_GET['logout'])) {
 
-	    $notification = 'ingelogd';
-	    $_SESSION['notification'] = $notification;
-
 	    setcookie('authenticated', TRUE, time() - 60*60*24*30);
 	    header('location: login-form.php');
 

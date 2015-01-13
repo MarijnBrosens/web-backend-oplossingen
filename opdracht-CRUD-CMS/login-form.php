@@ -29,17 +29,6 @@
 
     }
 
-    /*
-    if(isset($_SESSION['notification'])) {
-
-        $notification = $_SESSION['notification'];
-        
-    }
-    */
-
-    //var_dump($email);
-    //var_dump($password);
-
 ?>
 
 <!DOCTYPE html>
