@@ -29,13 +29,9 @@
 
 		$email			= $_POST[ 'email' ];
 		$password		= $_POST[ 'password' ];
-		
-		/*$salt           = uniqid( mt_rand() , true );
-    	$hashedPassword = crypt( $password , $salt );    	*/
 
 		$_SESSION[ 'registration' ][ 'email' ]			= $email;
     	$_SESSION[ 'registration' ][ 'password' ]	    = $password;
-    	//$_SESSION[ 'registration' ][ 'hashedPassword' ]	= $hashedPassword;
 
 
 		// Email check
