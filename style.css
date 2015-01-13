@@ -3,6 +3,7 @@ body{
 	color: #222;
 	font-family: arial;
 	padding-left: 50px;
+	padding-right: 50px;
 }
 
 h1{
@@ -97,14 +98,15 @@ a:hover{
 }
 
 .button{
-	background: #0061FF;
+	background: #222;
 	text-align: center;
 	padding: 1em;
 	display: block;
+	color: #fff;
 }
 
 .button:hover{
-	background: #004ECC;
+	background: #111;
 }
 
 .ok{
@@ -139,7 +141,7 @@ input{
 
 .btn:hover,
 input[type="submit"]:hover{
-	background: #004ECC;
+	background: #111;
 	cursor: pointer;
 	color: #fff;
 }
@@ -157,4 +159,7 @@ table tr.selectedId:nth-child(odd) td,
 div.selectedId{
 	color: rgb(255, 129, 63);
 	background:transparent;
+}
+ul{
+	padding-left: 0;
 }

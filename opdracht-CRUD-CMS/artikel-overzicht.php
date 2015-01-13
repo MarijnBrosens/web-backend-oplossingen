@@ -23,8 +23,6 @@
 	    header('location: login-form.php');
 
 	}
-
-	//var_dump( $_SESSION );
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@
 				<div class="modal <?= $message['type'] ?>">
 					<?= $message['text'] ?>
 				</div>
-			<?php endif ?>
+			<?php endif ?>			
 
 		    <ul>
 	            <li><a href="dashboard.php">Terug naar dashboard</a></li>
@@ -47,12 +45,12 @@
 	            <li><a href="dashboard.php?logout=true">Uitloggen</a></li>
         	</ul>
 
-        	<h1>Dashboard</h1>
+        	<h1>Overzicht van de artikels</h1>
 
         	<hr>
-
+        	<p>hier komen artikels</p>
         	<ul>
-                <li><a href="artikel-overzicht.php">Artikels</a></li>
+                <li><a href="artikel-toevoegen-form.php">Nieuw artikel</a></li>
             </ul>
 
 	</body>
