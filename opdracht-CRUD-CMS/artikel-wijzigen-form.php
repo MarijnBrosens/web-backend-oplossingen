@@ -32,7 +32,7 @@
 											is_archived
 				                   		FROM
 				                      		artikels 
-										WHERE 	(id = $wijzigArticleId)");
+										WHERE 	( id = $wijzigArticleId )");
 
 	$artikelFieldNames			= 	$alleArtikelsQuery[ 'fieldnames' ];
 	$artikels					=	$alleArtikelsQuery[ 'data' ];
@@ -57,42 +57,46 @@
 	</head>
 	<body>
 		
-			<?php if ( isset ( $message ) ): ?>
-				<div class="modal <?= $message['type'] ?>">
-					<?= $message['text'] ?>
-				</div>
-			<?php endif ?>		
+		<?php if ( isset ( $message ) ): ?>
+			<div class="modal <?= $message['type'] ?>">
+				<?= $message['text'] ?>
+			</div>
+		<?php endif ?>		
 
-		    <ul>
-	            <li><a href="dashboard.php">Terug naar dashboard</a></li>
-	            <li>Ingelogd als <?= $email ?></li>
-	            <li><a href="dashboard.php?logout=true">Uitloggen</a></li>
-        	</ul>
+	    <ul>
+            <li><a href="dashboard.php">Terug naar dashboard</a></li>
+            <li>Ingelogd als <?= $email ?></li>
+            <li><a href="dashboard.php?logout=true">Uitloggen</a></li>
+    	</ul>
 
-        	<h1>Artikel bewerken</h1>
-        	<hr>
+    	<h1>Artikel bewerken</h1>
+    	<hr>
 
-        	<form action="artikel-toevoegen-process.php" method="post">
-	            <ul>
-	                <li>
-	                    <label for="titel">Titel</label>
-	                    <input type="text" name="titel" id="titel" placeholder="Titel" value="<?php echo $artikels[0]['titel']  ?>">
-	                </li>
-	                <li>
-	                    <label for="artikel">Artikel</label>
-	                    <textarea type="text" name="artikel" id="artikel" placeholder="Artikel"><?php echo $artikels[0]['artikel']  ?>
-	                    </textarea>
-	                </li>
-	                <li>
-	                    <label for="kernwoorden">Kernwoorden</label>
-	                    <input type="text" name="kernwoorden" id="kernwoorden" placeholder="Kernwoorden" value="<?php echo $artikels[0]['kernwoorden']  ?>">
-	                </li>
-	                <li>
-	                    <label for="datum">Datum (jjjj-mm-dd)</label>
-	                    <input type="text" name="datum" id="datum" placeholder="Datum" value="<?php echo $artikels[0]['datum']  ?>">
-	                </li>
-	            </ul>
-	            <input class="button" name="submit" type="submit" value="Artikel wijzigen">
-	        </form>							
+    	<form action="artikel-wijzigen-process.php" method="post">
+            <ul>
+                <li>
+                    <label for="titel">Titel</label>
+                    <input type="text" name="titel" id="titel" placeholder="Titel" value="<?php echo $artikels[0]['titel']  ?>">
+                </li>
+                <li>
+                    <label for="artikel">Artikel</label>
+                    <textarea type="text" name="artikel" id="artikel" placeholder="Artikel"><?php echo $artikels[0]['artikel']  ?>
+                    </textarea>
+                </li>
+                <li>
+                    <label for="kernwoorden">Kernwoorden</label>
+                    <input type="text" name="kernwoorden" id="kernwoorden" placeholder="Kernwoorden" value="<?php echo $artikels[0]['kernwoorden']  ?>">
+                </li>
+                <li>
+                    <label for="datum">Datum (jjjj-mm-dd)</label>
+                    <input type="text" name="datum" id="datum" placeholder="Datum" value="<?php echo $artikels[0]['datum']  ?>">
+                </li>
+            </ul>
+            
+            <input type="hidden" name="id" id="id" placeholder="id" value="<?php echo $artikels[0]['id']  ?>">
+
+            <input class="button" name="submit" type="submit" value="Artikel wijzigen">
+        </form>	
+
 	</body>
 </head>
