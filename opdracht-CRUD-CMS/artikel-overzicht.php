@@ -21,19 +21,21 @@
   	$db = new Database( $connection );
 
 	$alleArtikelsQuery = $db->query('	SELECT
-										id, 
-										titel, 
-										artikel, 
-										kernwoorden, 
-										datum, 
-										is_active, 
-										is_archived
-			                   		FROM
-			                      		artikels ');
+											id, 
+											titel, 
+											artikel, 
+											kernwoorden, 
+											datum, 
+											is_active, 
+											is_archived
+				                   		FROM
+				                      		artikels ');
 
 	$artikelFieldNames			= 	$alleArtikelsQuery[ 'fieldnames' ];
 	$artikels					=	$alleArtikelsQuery[ 'data' ];
-	$artikelTitel				=	$alleArtikelsQuery[ 'fieldnames'][1];
+	$artikelsTitel				=	$alleArtikelsQuery[ 'data' ][0]['titel'];
+
+	//var_dump($artikels);
 
 	// uitloggen
 	if(isset($_GET['logout'])) {
@@ -52,52 +54,43 @@
 	</head>
 	<body>
 		
-			<?php if ( isset ( $message ) ): ?>
-				<div class="modal <?= $message['type'] ?>">
-					<?= $message['text'] ?>
+		<?php if ( isset ( $message ) ): ?>
+			<div class="modal <?= $message['type'] ?>">
+				<?= $message['text'] ?>
+			</div>
+		<?php endif ?>			
+
+	    <ul>
+            <li><a href="dashboard.php">Terug naar dashboard</a></li>
+            <li>Ingelogd als <?= $email ?></li>
+            <li><a href="dashboard.php?logout=true">Uitloggen</a></li>
+    	</ul>
+
+    	<h1>Overzicht van de artikels</h1>
+
+    	<hr>
+
+    	<ul>
+            <li><a href="artikel-toevoegen-form.php">Nieuw artikel</a></li>
+        </ul>
+
+		<div class="row">
+
+			<?php foreach ($artikels as $key => $artikel): ?>
+
+				<div class="col-lg-4">
+					<article>
+						<h2>Titel: <?php echo $artikels[$key]['titel']  ?>		</h2>
+						<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>	</p>
+						<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?></p>
+						<p>Datum: <?php echo $artikels[$key]['datum']  ?>		</p>						
+					</article>
+					<hr>
 				</div>
-			<?php endif ?>			
 
-		    <ul>
-	            <li><a href="dashboard.php">Terug naar dashboard</a></li>
-	            <li>Ingelogd als <?= $email ?></li>
-	            <li><a href="dashboard.php?logout=true">Uitloggen</a></li>
-        	</ul>
+			<?php endforeach ?>	
 
-        	<h1>Overzicht van de artikels</h1>
+		</div>
 
-        	<hr>
-
-			<table>
-				<?= $artikelTitel ?>
-				<thead>
-					<tr>
-						<th>#</th>
-						<?php foreach ($artikelFieldNames as $fieldname): ?>
-							<th><?= $fieldname ?></th>
-						<?php endforeach ?>
-						<th></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<?php foreach ($artikels as $key => $artikel): ?>
-						<tr>
-							<td><?= ++$key ?></td>
-							<?php foreach ($artikel as $value): ?>
-								<td><?= $value ?></td>
-							<?php endforeach ?>
-						</tr>
-					<?php endforeach ?>
-					
-				</tbody>
-
-			</table>
-
-
-        	<ul>
-                <li><a href="artikel-toevoegen-form.php">Nieuw artikel</a></li>
-            </ul>
-
-	</body>
+    </body>
 </head>
