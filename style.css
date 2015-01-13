@@ -160,6 +160,11 @@ div.selectedId{
 	color: rgb(255, 129, 63);
 	background:transparent;
 }
+
 ul{
 	padding-left: 0;
+}
+
+article{
+	margin-bottom: 30px;
 }

@@ -76,16 +76,25 @@
 
 		<div class="row">
 
-			<?php foreach ($artikels as $key => $artikel): ?>
+			<?php foreach ( $artikels as $key => $artikel ): ?>
 
 				<div class="col-lg-4">
+
 					<article>
-						<h2>Titel: <?php echo $artikels[$key]['titel']  ?>		</h2>
-						<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>	</p>
-						<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?></p>
-						<p>Datum: <?php echo $artikels[$key]['datum']  ?>		</p>						
-					</article>
-					<hr>
+						<h2>Titel: <?php echo $artikels[$key]['titel']  ?>				</h2>
+						<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>			</p>
+						<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?>	</p>
+						<p>Datum: <?php echo $artikels[$key]['datum']  ?>				</p>	
+
+						<hr>
+
+						<p>
+	                        <a href="edit-artikel-form.php?article=<?= $key ?>">Edit</a> |
+	                        <a href="activate-artikel.php?article=<?= $key ?>"> <?= ($artikels[$key]['is_active'] == 0) ? '' : 'de'  ?>Activate</a> |
+	                        <a href="delete-artikel.php?article=<?= $key ?>">Delete</a>
+	                    </p>					
+					</article>	
+					
 				</div>
 
 			<?php endforeach ?>	
