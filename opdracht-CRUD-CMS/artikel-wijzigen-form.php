@@ -16,6 +16,30 @@
 
 	}
 
+	$connection = new PDO( 'mysql:host=localhost;dbname=db_CRUD_CMS', 'root', '' );
+
+  	$db = new Database( $connection );
+
+  	$wijzigArticleId =   $_GET['artikel'];
+
+	$alleArtikelsQuery = $db->query( "	SELECT
+											id, 
+											titel, 
+											artikel, 
+											kernwoorden, 
+											datum, 
+											is_active, 
+											is_archived
+				                   		FROM
+				                      		artikels 
+										WHERE 	(id = $wijzigArticleId)");
+
+	$artikelFieldNames			= 	$alleArtikelsQuery[ 'fieldnames' ];
+	$artikels					=	$alleArtikelsQuery[ 'data' ];
+
+	var_dump( $artikels[0]['id'] );
+
+
 	// uitloggen
 	if( isset($_GET['logout']) ) {
 
@@ -37,9 +61,7 @@
 				<div class="modal <?= $message['type'] ?>">
 					<?= $message['text'] ?>
 				</div>
-			<?php endif ?>
-		
-			
+			<?php endif ?>		
 
 		    <ul>
 	            <li><a href="dashboard.php">Terug naar dashboard</a></li>
@@ -54,22 +76,23 @@
 	            <ul>
 	                <li>
 	                    <label for="titel">Titel</label>
-	                    <input type="text" name="titel" id="titel" placeholder="Titel">
+	                    <input type="text" name="titel" id="titel" placeholder="Titel" value="<?php echo $artikels[0]['titel']  ?>">
 	                </li>
 	                <li>
 	                    <label for="artikel">Artikel</label>
-	                    <textarea type="text" name="artikel" id="artikel" placeholder="Artikel"></textarea>
+	                    <textarea type="text" name="artikel" id="artikel" placeholder="Artikel"><?php echo $artikels[0]['artikel']  ?>
+	                    </textarea>
 	                </li>
 	                <li>
 	                    <label for="kernwoorden">Kernwoorden</label>
-	                    <input type="text" name="kernwoorden" id="kernwoorden" placeholder="Kernwoorden">
+	                    <input type="text" name="kernwoorden" id="kernwoorden" placeholder="Kernwoorden" value="<?php echo $artikels[0]['kernwoorden']  ?>">
 	                </li>
 	                <li>
 	                    <label for="datum">Datum (jjjj-mm-dd)</label>
-	                    <input type="text" name="datum" id="datum" placeholder="Datum">
+	                    <input type="text" name="datum" id="datum" placeholder="Datum" value="<?php echo $artikels[0]['datum']  ?>">
 	                </li>
 	            </ul>
-	            <input class="button" name="submit" type="submit" value="Artikel toevoegen">
-	        </form>
+	            <input class="button" name="submit" type="submit" value="Artikel wijzigen">
+	        </form>							
 	</body>
 </head>

@@ -86,7 +86,7 @@
 							<p>Artikel: <?php echo $artikels[$key]['artikel']  ?>			</p>
 							<p>Kernwoorden: <?php echo $artikels[$key]['kernwoorden']  ?>	</p>
 							<p>Datum: <?php echo $artikels[$key]['datum']  ?>				</p>	
-							<p>Is_deleted: <?php echo $artikels[$key]['is_archived']  ?>		</p>
+							<p>Is_deleted: <?php echo $artikels[$key]['is_archived']  ?>	</p>
 
 							<hr>
 
