@@ -16,6 +16,25 @@
 
 	}
 
+	$connection = new PDO( 'mysql:host=localhost;dbname=db_CRUD_CMS', 'root', '' );
+
+  	$db = new Database( $connection );
+
+	$alleArtikelsQuery = $db->query('	SELECT
+										id, 
+										titel, 
+										artikel, 
+										kernwoorden, 
+										datum, 
+										is_active, 
+										is_archived
+			                   		FROM
+			                      		artikels ');
+
+	$artikelFieldNames			= 	$alleArtikelsQuery[ 'fieldnames' ];
+	$artikels					=	$alleArtikelsQuery[ 'data' ];
+	$artikelTitel				=	$alleArtikelsQuery[ 'fieldnames'][1];
+
 	// uitloggen
 	if(isset($_GET['logout'])) {
 
@@ -48,7 +67,34 @@
         	<h1>Overzicht van de artikels</h1>
 
         	<hr>
-        	<p>hier komen artikels</p>
+
+			<table>
+				<?= $artikelTitel ?>
+				<thead>
+					<tr>
+						<th>#</th>
+						<?php foreach ($artikelFieldNames as $fieldname): ?>
+							<th><?= $fieldname ?></th>
+						<?php endforeach ?>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php foreach ($artikels as $key => $artikel): ?>
+						<tr>
+							<td><?= ++$key ?></td>
+							<?php foreach ($artikel as $value): ?>
+								<td><?= $value ?></td>
+							<?php endforeach ?>
+						</tr>
+					<?php endforeach ?>
+					
+				</tbody>
+
+			</table>
+
+
         	<ul>
                 <li><a href="artikel-toevoegen-form.php">Nieuw artikel</a></li>
             </ul>

@@ -65,7 +65,7 @@
 	                    <input type="text" name="kernwoorden" id="kernwoorden" placeholder="Kernwoorden">
 	                </li>
 	                <li>
-	                    <label for="datum">Datum (dd-mm-jjjj)</label>
+	                    <label for="datum">Datum (jjjj-mm-dd)</label>
 	                    <input type="text" name="datum" id="datum" placeholder="Datum">
 	                </li>
 	            </ul>

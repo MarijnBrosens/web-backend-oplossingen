@@ -38,21 +38,19 @@
 
 
 
-  if(isset($_POST['submit'])) {
+  if( isset( $_POST['submit'] ) ) {
 
-      if(mysqli_query($connection, $insertArticle)) {
+      if( $insertArticle ) {
 
           // query successful
-          $notification = 'The article is successful added to the database';
-          $_SESSION['notification'] = $notification;
-          header('location: articles-overview.php');
+          new Message( "ok", "artikel toegevoegd aan db" ); 
+          header( 'location: artikel-overzicht.php' );
 
       } else {
 
           // query failed
-          $notification = 'The article is not successful added to the database';
-          $_SESSION['notification'] = $notification;
-          header('location: add-article-form.php');
+          new Message( "error", "artikel toegevoegd aan db MISLUKT" ); 
+          header( 'location: artikel-toevoegen-form.php' );
 
       }
   }
