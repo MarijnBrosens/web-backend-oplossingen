@@ -12,10 +12,10 @@
   $db = new Database( $connection );
 
 
-  $tokens = array(  ':titel'        => real_escape_string($_POST['titel'],
-                    ':artikel'      => real_escape_string($_POST['artikel'],
-                    ':kernwoorden'  => real_escape_string($_POST['kernwoorden'],
-                    ':datum'        => real_escape_string($_POST['datum']);
+  $tokens = array(  ':titel'        => $_POST['titel'],
+                    ':artikel'      => $_POST['artikel'],
+                    ':kernwoorden'  => $_POST['kernwoorden'],
+                    ':datum'        => $_POST['datum']);
 
   $insertArticle = $db->query( 'INSERT INTO artikels 
                                                   (   
