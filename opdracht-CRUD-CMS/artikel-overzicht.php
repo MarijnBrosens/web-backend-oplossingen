@@ -89,9 +89,9 @@
 						<hr>
 
 						<p>
-	                        <a href="artikel-wijzigen-form.php?artikel=<?= ($artikels[$key]['id']) ?>">artikel wijzigen</a> |
-	                        <a href="artikel-activeren.php?artikel=<?= ($artikels[$key]['id']) ?>"> <?= ( $artikels[$key]['is_active'] == 0) ? 'artikel activeren' : 'artikel deactiveren'  ?></a> |
-	                        <a href="delete-artikel.php?artikel=<?= ($artikels[$key]['id']) ?>">artikel verwijderen</a>
+	                        <a href="artikel-wijzigen-form.php?artikel=<?= ( $artikels[$key]['id'] ) ?>">artikel wijzigen</a> |
+	                        <a href="artikel-activeren.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"> <?= ( $artikels[$key]['is_active'] == 0) ? 'artikel activeren' : 'artikel deactiveren'  ?></a> |
+	                        <a href="artikel-verwijderen.php?artikel=<?= ( $artikels[$key]['id'] ) ?>"><?= ( $artikels[$key]['is_archived'] == 0) ? 'artikel verwijderen' : 'artikel uit archief halen'  ?></a>
 	                    </p>					
 					</article>	
 					

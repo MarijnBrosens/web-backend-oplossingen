@@ -13,8 +13,8 @@
 
 	$toggleArticleId =   $_GET['artikel'] ;
 
-	$artikelActiveren = $db->query( "	UPDATE 	artikels
-										SET 	is_active =	!is_active
+	$artikelArchiveren	= $db->query( "	UPDATE 	artikels
+										SET 	is_archived =	!is_archived
 										WHERE 	(id = $toggleArticleId)");
 
 
