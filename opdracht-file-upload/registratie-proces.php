@@ -39,7 +39,7 @@
 
 		if ( $isEmail ) {
 			
-			$connection	=	new PDO( 'mysql:host=localhost;dbname=db_CRUD_CMS', 'root', '' );
+			$connection	=	new PDO( 'mysql:host=localhost;dbname=db_file_upload', 'root', '' );
 
 			$db = new Database( $connection );	
 			

@@ -25,8 +25,8 @@
 												NOW()
 											)';
 
-			$tokens	=	array( ':email' => $email,
-								':salt' => $salt,
+			$tokens	=	array( ':email' 	=> $email,
+								':salt' 	=> $salt,
 								':password' => $hashedPassword);
 
 			$userData	=	$db->query( $query , $tokens );
