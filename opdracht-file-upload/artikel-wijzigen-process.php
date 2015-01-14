@@ -27,9 +27,9 @@
 												kernwoorden = :kernwoorden,
 												datum 		= :datum
 											WHERE
-												(
+											(
 												id 			= :id
-												) ", $tokens );
+											) ", $tokens );
 
 
 		var_dump( $wijzigArtikel['data'] );
