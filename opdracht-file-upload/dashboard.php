@@ -53,7 +53,7 @@
 
         	<ul>
                 <li><a href="artikel-overzicht.php">Artikels</a></li>
-                <li><a href="gegevens-wijzigen-form.php"></a></li>
+                <li><a href="gegevens-wijzigen-form.php?user=<?= $email ?>">Gegevens wijzigen</a></li>
             </ul>
 
 	</body>

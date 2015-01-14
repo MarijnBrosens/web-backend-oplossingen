@@ -11,7 +11,7 @@
 
 	$db = new Database( $connection );
 
-	if( isset( $_POST['submit'] ) ) {
+	if( isset( $_POST[ 'submit' ] ) ) {
 
 		$tokens = array(	':id'			=> $_POST['id'],
 						  	':titel'        => $_POST['titel'],
@@ -29,7 +29,7 @@
 											WHERE
 												(
 												id 			= :id
-												) ", $tokens);
+												) ", $tokens );
 
 
 		var_dump( $wijzigArtikel['data'] );
@@ -46,10 +46,6 @@
 
 		}
 
-
 	}
-
-
-
 
  ?>
