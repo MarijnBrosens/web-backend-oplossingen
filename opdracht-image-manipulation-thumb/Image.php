@@ -216,7 +216,7 @@
 					break;
 					
 				case ('image/png'):
-					$resized 	=	imagepng( $imageSource, $path, 100);
+					$resized 	=	imagepng( $imageSource, $path, 9);
 					break;
 
 				case ('image/gif'):
