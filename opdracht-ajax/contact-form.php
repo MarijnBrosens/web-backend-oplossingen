@@ -18,7 +18,7 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>opdracht-mail</title>
+        <title>opdracht-ajax</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
@@ -33,7 +33,7 @@
     <?php endif ?>  
 
 
-    <h1>Opdracht mail</h1>
+    <h1>Opdracht ajax</h1>
 
     <hr>
 

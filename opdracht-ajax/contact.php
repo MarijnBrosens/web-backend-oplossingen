@@ -7,7 +7,7 @@
 		require_once( 'classes/' . $classname . '.php' );
 	}
 
-	$connection 	=	 new PDO( 'mysql:host=localhost;dbname=db_contact_messages', 'root', '' );
+	$connection 	=	 new PDO( 'mysql:host=localhost;dbname=db_ajax', 'root', '' );
 	$db = new Database( $connection );
 
 	if ( isset( $_POST[ 'submit' ] ) ) 
