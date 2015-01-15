@@ -36,7 +36,7 @@
 
 		if ( $insertEmail ) {
 
-			$aan 			= 	'hpo82988@kiois.com';
+			$admin 			= 	'hpo82988@kiois.com';
 			$titel 			= 	'titel van de mail komt hier';
 
 			$bericht 		= 	$_POST[ 'bericht' ];
@@ -46,13 +46,13 @@
 			
 			$headers 		= 	'From: ' . $afzenderEmail ;
 
-			mail( $aan, $titel, $bericht, $headers );
+			mail( $admin, $titel, $bericht, $headers );
 
 			
 			// copie checked
 			if ( $copy ) {
 
-				$aan 			= 	$afzenderEmail;
+				$admin 			= 	$afzenderEmail;
 				$titel 			= 	'titel van de mail komt hier';
 
 				$bericht 		= 	$_POST[ 'bericht' ];
@@ -62,7 +62,7 @@
 				
 				$headers 		= 	'From: ' . $afzenderEmail ;
 
-				mail( $aan, $titel, $bericht, $headers );
+				mail( $admin, $titel, $bericht, $headers );
 
 			}
 

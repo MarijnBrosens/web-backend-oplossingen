@@ -37,7 +37,7 @@
 
     <hr>
 
-    <form action="contact.php" method="POST">
+    <form action="contact.php" method="POST" id="form">
 
     	<ul>
     	    <li><label for="afzenderEmail">afzender email adres</label></li>
@@ -47,10 +47,43 @@
 
     	    <li><input type="checkbox" name="copy" id="copy"></li>
 
-    	    <li><input type="submit" name="submit" value="Verzenden"></li>
+    	    <li><input type="submit" name="submit" id="submit" value="Verzenden"></li>
     	</ul>
 
     </form> 
 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script>
+
+        $( document ).ready( function() {
+         
+            //alert( "jquery werkt" );
+
+            $( "#form" ).submit( function( event ) {
+
+                //alert( "Handler for .submit() called." );
+                //event.preventDefault();
+
+                var data    =   $('#form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'contact-API.php',
+                    data: data,
+                    success: function( data ) {
+                            
+                        parsedData = JSON.parse( data );
+                        console.log( parsedData );
+                        
+                    }
+                })
+            
+                return false;
+
+            });
+
+        });
+
+     </script>
     </body>
 </html>
