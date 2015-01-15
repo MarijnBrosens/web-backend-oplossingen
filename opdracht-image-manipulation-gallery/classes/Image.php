@@ -206,7 +206,8 @@
 			imagecopyresized( $canvas, $original, 0, 0, $beginXCoordinaat, $beginYCoordinaat, $width, $height, $kortsteZijde, $kortsteZijde );
 
 			# Save new image
-			$this->thumbnailFilename	=	$this->newFilename . '-' . $this->filename . '_thumbs' . '.' . $this->extension;
+			//$this->thumbnailFilename	=	$this->newFilename . '-' . $this->filename . '_thumbs' . '.' . $this->extension;
+			$this->thumbnailFilename	=	'thumbs_' .$this->newFilename . '.' . $this->extension;
 			$this->thumbnailPath		=	$this->root . $this->imageFolder . 'thumbs/' . $this->thumbnailFilename;
 			
 			//var_dump($this->thumbnailPath);

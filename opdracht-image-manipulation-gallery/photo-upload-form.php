@@ -37,6 +37,8 @@
 
     <h1>Foto uploaden</h1>
 
+    <hr>
+
     <form action="photo-upload.php" method="POST" enctype="multipart/form-data">
 
         <input type="file" name="image" id="image">

@@ -40,7 +40,7 @@
 														"image/png", 
 														"image/gif" ) );
 			$isSize	=	$image->validateSize( 2000000 ); // 2MB
-			$hasError	=	$image->validateError( );
+			$hasError	=	$image->validateError();
 
 			if ( $isType && $isSize && !$hasError )
 			{
@@ -86,7 +86,9 @@
 
 
 
-					var_dump($gallery);					
+					var_dump($gallery);	
+					new Message('ok', 'Image geupload.');
+	           		header('location: photo-upload-form.php');				
 				}
 			}
 
