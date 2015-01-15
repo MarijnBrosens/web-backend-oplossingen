@@ -22,8 +22,27 @@
 
 		mail( $aan, $titel, $bericht, $headers );
 
+		
+
+		if ( $copy ) {
+
+			$aan 			= 	$afzenderEmail;
+			$titel 			= 	'titel van de mail komt hier';
+
+			$bericht 		= 	$_POST[ 'bericht' ];
+			$afzenderEmail 	= 	$_POST[ 'afzenderEmail' ];
+
+			$copy			=	( isset($_POST['copy'] ) ) ? true : false; // checkbox
+			
+			$headers 		= 	'From: ' . $afzenderEmail ;
+
+			mail( $aan, $titel, $bericht, $headers );
+
+		}
+
 		$message	=	new Message( 'ok', 'mail verzonden'  );
 		header( 'location: contact-form.php' );
+
 
 	} else {
 
