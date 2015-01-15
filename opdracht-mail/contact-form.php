@@ -9,19 +9,6 @@
 
 	$message	=	Message::getMessage();
 
-	$connection 	=	 new PDO( 'mysql:host=localhost;dbname=db_contact_messages', 'root', '' );
-	$db = new Database( $connection );
-
-	/*$query	=	'SELECT * 
-				FROM gallery
-				WHERE is_archived = 0';*/
-
-	//$images		=	$db->query( $query );
-	//$imagesData	= 	$images[ 'data' ];
-
-	//var_dump($images);
-	//var_dump($imagesData);
-
 ?>
 
 
@@ -36,7 +23,7 @@
     </head>
     <body>
 
-    	
+
 	<?php if ( isset ( $message ) ): ?>
 
         <div class="modal <?= $message['type'] ?>">
