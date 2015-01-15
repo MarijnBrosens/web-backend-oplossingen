@@ -11,7 +11,41 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/',function()
 {
-	return View::make('home.index');
+	$users = DB::table('users')->get();
+
+	var_dump($users);
 });
+
+//2015-01-14 00:00:00
+
+// Route::get('/', function()
+// {
+// 	//$title = 'titel van de pagina';
+// 	return View::make( 'home.index' );
+// });
+
+// Route::get('/about', function()
+// {
+// 	$title = 'about';
+// 	return View::make( 'home.about' )->with('title', $title);
+// });
+
+// Route::post('/', function()
+// {
+// 	$input = Input::all();
+
+// 	DB::insert('insert into users ( email, salt ) values ( ?,? )' , 
+// 		array( $input['email'], $input['salt'] ));
+// });
+
+// Route::get('/', function()
+// {
+// 	//$user = DB::select('select * from users');
+
+// 	//dd($user);
+// 	//var_dump($user);
+
+// 	//return $user;	
+// });
