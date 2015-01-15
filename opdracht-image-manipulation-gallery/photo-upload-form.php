@@ -28,7 +28,7 @@
         <div class="modal <?= $message['type'] ?>">
             <?= $message['text'] ?>
         </div>
-        
+
     <?php endif ?>  
 
     <ul>
@@ -41,11 +41,11 @@
 
         <input type="file" name="image" id="image">
 
-        <label for="titel">Titel</label>
-        <input type="text" name="titel" placeholder="Titel">
+        <label for="title">Titel</label>
+        <input type="text" name="title" placeholder="Titel">
 
-        <label for="beschrijving">Beschrijving</label>
-        <input type="text" name="beschrijving" placeholder="Beschrijving">
+        <label for="caption">Beschrijving</label>
+        <input type="text" name="caption" placeholder="Beschrijving">
 
         <input type="submit" name="submit" value="Verzenden">
 

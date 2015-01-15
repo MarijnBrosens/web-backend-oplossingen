@@ -83,7 +83,8 @@
 		{
 			$fileExists = false;
 			# Check if file exists
-			$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+			//$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+			$this->newFilePath	=	$this->root . $path . $this->newFilename . '.' . $this->extension;
 
 			if ( file_exists( $this->newFilePath ) ) {
 
@@ -109,6 +110,11 @@
 
 	    }
 
+	    public function getFullFilename()
+	    {
+	    	return $this->newFilename . '.' . $this->extension;
+	    }
+
 
 		public function upload( $path )
 		{
@@ -119,7 +125,8 @@
 			
 
 			# Check if file exists
-			$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+			//$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+			$this->newFilePath	=	$this->root . $path . $this->newFilename . '.' . $this->extension;
 
 			if ( !file_exists( $this->newFilePath ) )
 			{
@@ -159,7 +166,7 @@
 			$this->extension = $extension;
 		} 
 
-		public function createThumbnail( $width, $height )
+		public function createThumb( $width, $height )
 		{
 			$isThumbnail 	=	false;
 
@@ -199,7 +206,7 @@
 			imagecopyresized( $canvas, $original, 0, 0, $beginXCoordinaat, $beginYCoordinaat, $width, $height, $kortsteZijde, $kortsteZijde );
 
 			# Save new image
-			$this->thumbnailFilename	=	'thumbnail-' . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+			$this->thumbnailFilename	=	$this->newFilename . '-' . $this->filename . '_thumbs' . '.' . $this->extension;
 			$this->thumbnailPath		=	$this->root . $this->imageFolder . 'thumbs/' . $this->thumbnailFilename;
 			
 			//var_dump($this->thumbnailPath);
