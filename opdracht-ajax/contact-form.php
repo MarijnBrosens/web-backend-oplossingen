@@ -53,7 +53,7 @@
     </form> 
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-     <script>
+          <script>
 
         $( document ).ready( function() {
          
@@ -74,6 +74,8 @@
                     success: function( data ) {
                             
                         var parsedData = JSON.parse( data );
+                        // data is wss empty
+                        
                         //console.log( parsedData );
 
                         if ( parsedData[ 'type' ] == "success") {
