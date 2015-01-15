@@ -28,13 +28,25 @@
 		$hasError	=	$image->validateError( );
 
 
+
 		if ( $isType && $isSize && !$hasError )
 		{
+
+			$newFileName =  $image->createNewFileName();
+
+			$fileExists =  $image->checkIfFileExists( '../uploads/img/' );
+
+			if ( $fileExists ) {
+
+				$newFileName =  $image->createNewFileName();
+
+			}
+
 			$isUploaded = $image->upload( '../uploads/img/' );
 
 			if ( $isUploaded )
 			{
-				$hasThumbnail	=	$image->createThumbnail( 100, 100 );
+				$hasThumbnail	=	$image->createThumbnail( 50, 50 );
 
 				if ( $hasThumbnail )
 				{
@@ -49,7 +61,7 @@
 			new Message('error', 'Het bestand moet van het type jpeg, png of gif zijn.');
             header('location: photo-upload-form.php');
 
-		}
+		} 
 
 		if ( !$isSize ) {
 			

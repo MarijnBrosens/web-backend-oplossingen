@@ -79,21 +79,44 @@
 			return $this->thumbnailFilename;
 		}
 
-		public function upload( $path, $filename = false )
+		public function checkIfFileExists( $path )
+		{
+			$fileExists = false;
+			# Check if file exists
+			$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
+
+			if ( file_exists( $this->newFilePath ) ) {
+
+				$fileExists = true;
+
+			}
+
+			return $fileExists;
+		}
+
+		public function createNewFileName( $filename = false) {
+
+	        # Create filename
+			if ( $filename	==	false )
+			{
+				$this->newFilename	=	md5( time() ); //uniqid()
+			}
+			else
+			{
+				$this->newFilename	=	md5( time() . $this->filename );
+			}
+	        return $this->newFilename;
+
+	    }
+
+
+		public function upload( $path )
 		{
 			$this->imageFolder	=	$path;
 
 			$isUploaded	=	false;
 
-			# Create filename
-			if ( $filename	==	false )
-			{
-				$this->newFilename	=	uniqid();
-			}
-			else
-			{
-				$this->newFilename	=	md5(time() . $filename);
-			}
+			
 
 			# Check if file exists
 			$this->newFilePath	=	$this->root . $path . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
