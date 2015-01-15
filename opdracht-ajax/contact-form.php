@@ -65,6 +65,7 @@
                 //event.preventDefault();
 
                 var data    =   $('#form').serialize();
+                console.log(data);
 
                 $.ajax({
                     type: 'POST',
@@ -72,9 +73,21 @@
                     data: data,
                     success: function( data ) {
                             
-                        parsedData = JSON.parse( data );
-                        console.log( parsedData );
-                        
+                        var parsedData = JSON.parse( data );
+                        //console.log( parsedData );
+
+                        if ( parsedData[ 'type' ] == "success") {
+
+                            $( '#form' ).fadeOut( 'normal' , function() {
+
+                                $( '#form' )
+                                    .append('<p>Bedankt! Uw bericht is goed verzonden!</p>')
+                                    .hide()
+                                    .fadeIn('fast');
+
+                            });
+                            
+                        }
                     }
                 })
             
