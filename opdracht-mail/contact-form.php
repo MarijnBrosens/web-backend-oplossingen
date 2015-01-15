@@ -1,26 +1,63 @@
+<?php
+
+	session_start();
+
+	function __autoload( $classname )
+	{
+		require_once( 'classes/' . $classname . '.php' );
+	}
+
+	$message	=	Message::getMessage();
+
+	$connection 	=	 new PDO( 'mysql:host=localhost;dbname=db_contact_messages', 'root', '' );
+	$db = new Database( $connection );
+
+	/*$query	=	'SELECT * 
+				FROM gallery
+				WHERE is_archived = 0';*/
+
+	//$images		=	$db->query( $query );
+	//$imagesData	= 	$images[ 'data' ];
+
+	//var_dump($images);
+	//var_dump($imagesData);
+
+?>
+
+
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Untitled</title>
+        <title>opdracht-mail</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
 
-    <h1>Foto uploaden</h1>
+    	
+	<?php if ( isset ( $message ) ): ?>
+
+        <div class="modal <?= $message['type'] ?>">
+            <?= $message['text'] ?>
+        </div>
+
+    <?php endif ?>  
+
+
+    <h1>Opdracht mail</h1>
 
     <hr>
 
-    <form action="photo-upload.php" method="POST">
+    <form action="contact.php" method="POST">
 
     	<ul>
-    	    <li><label for="email">Titel</label></li>
-    	    <li><input type="email" name="email" placeholder="Email"></li>
+    	    <li><label for="afzenderEmail">afzender email adres</label></li>
+    	    <li><input type="email" name="afzenderEmail" placeholder="Email"></li>
 
-    	    <li><textarea name="message" id="message" cols="30" rows="10"></textarea></li>
-    	    
+    	    <li><textarea name="bericht" id="bericht" cols="30" rows="10"></textarea></li>
+
     	    <li><input type="checkbox" name="copy" id="copy"></li>
 
     	    <li><input type="submit" name="submit" value="Verzenden"></li>
