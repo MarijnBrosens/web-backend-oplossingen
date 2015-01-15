@@ -30,27 +30,17 @@
 
 		if ( $isType && $isSize && !$hasError )
 		{
-			$isUploaded = $image->upload( '../uploads/img/bin' );
+			$isUploaded = $image->upload( '../uploads/img/' );
 
+			if ( $isUploaded )
+			{
+				$hasThumbnail	=	$image->createThumbnail( 100, 100 );
 
-	        if( !$isDuplicate ) {
-
-	            $isUploaded = $image->upload( '../uploads/img/' );
-
-	        }
-
-	        if( $isUploaded ) {
-
-	            $hasThumbnail = $image->create_thumbnail( 50, 50 );
-
-	            if ( $hasThumbnail ) {
-
-					$data[ 'src' ]	=	$image->getThumbnailFilename();
-					
+				if ( $hasThumbnail )
+				{
+					$data['src']	=	$image->getThumbnailFilename();
 				}
-
-	        }
-
+			}
 		}
 
 		//error messages

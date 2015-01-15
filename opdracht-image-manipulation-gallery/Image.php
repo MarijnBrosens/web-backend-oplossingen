@@ -92,7 +92,7 @@
 			}
 			else
 			{
-				$this->newFilename	=	md5(time() . $filename);
+				$this->newFilename	=	$filename;
 			}
 
 			# Check if file exists
@@ -177,7 +177,7 @@
 
 			# Save new image
 			$this->thumbnailFilename	=	'thumbnail-' . $this->newFilename . '-' . $this->filename . '.' . $this->extension;
-			$this->thumbnailPath		=	$this->root . $this->imageFolder . 'thumbs/' . $this->thumbnailFilename;
+			$this->thumbnailPath		=	$this->root . $this->imageFolder . 'thumbnails/' . $this->thumbnailFilename;
 			
 			//var_dump($this->thumbnailPath);
 			$isThumbnail = $this->saveImage( $canvas, $this->thumbnailPath );
@@ -216,7 +216,7 @@
 					break;
 					
 				case ('image/png'):
-					$resized 	=	imagepng( $imageSource, $path, 9); // was 100 - veranderd naar 9 (moet tussen 0 en 9 zijn)
+					$resized 	=	imagepng( $imageSource, $path, 100);
 					break;
 
 				case ('image/gif'):
