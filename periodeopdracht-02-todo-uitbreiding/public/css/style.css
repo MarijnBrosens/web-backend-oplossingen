@@ -48,3 +48,15 @@ nav a:hover{
 	width: 1200px;
 	padding: 50px;
 }
+
+.error{
+	color: #b94a48;
+	background-color: #f2dede;
+	border: 1px solid #eed3d7;
+}
+
+.modal {
+	margin: 5px 0px;
+	padding: 5px;
+	border-radius: 5px;
+}

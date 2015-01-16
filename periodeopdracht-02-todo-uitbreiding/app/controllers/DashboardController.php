@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class DashboardController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,9 +15,9 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function getHome()
+	public function getDashboard()
 	{
-		return View::make('home.index');
+		return View::make( 'dashboard.index' );
 	}
 
 }

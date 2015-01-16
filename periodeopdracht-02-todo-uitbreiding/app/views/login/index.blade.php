@@ -2,6 +2,12 @@
 
 @section('content')
 
+	@foreach ( $errors->all() as $errorMessage)
+
+		<div class="modal error"> {{ $errorMessage }} </div>
+
+	@endforeach
+
 	{{ Form::open( array( 'autocomplete' => 'off' ) ) }}
 
 	{{ Form::text( 'email' , '' , array( 'placeholder' => 'email' ) ) }}

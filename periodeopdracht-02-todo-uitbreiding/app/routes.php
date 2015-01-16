@@ -11,40 +11,10 @@
 |
 */
 
-Route::get('/', array( 'as' => 'home' , 'uses' => 'HomeController@getHome'));
+Route::get('/', array( 'as' => 'dashboard' , 'uses' => 'DashboardController@getDashboard'))->before('auth'); // moet ingelogd zijn
 
-Route::get('/login', array( 'as' => 'login' , 'uses' => 'LoginController@getLogin'));
+Route::get('/login', array( 'as' => 'login' , 'uses' => 'UserController@getLogin'))->before('guest'); //indien ingelogd redirect naar dashboard
 
-Route::post('login', array( 'uses' => 'LoginController@postLogin'));
+Route::post('login', array( 'uses' => 'UserController@postLogin'))->before('csrf');
 
-//2015-01-14 00:00:00
-
-// Route::get('/', function()
-// {
-// 	//$title = 'titel van de pagina';
-// 	return View::make( 'home.index' );
-// });
-
-// Route::get('/about', function()
-// {
-// 	$title = 'about';
-// 	return View::make( 'home.about' )->with('title', $title);
-// });
-
-// Route::post('/', function()
-// {
-// 	$input = Input::all();
-
-// 	DB::insert('insert into users ( email, salt ) values ( ?,? )' , 
-// 		array( $input['email'], $input['salt'] ));
-// });
-
-// Route::get('/', function()
-// {
-// 	//$user = DB::select('select * from users');
-
-// 	//dd($user);
-// 	//var_dump($user);
-
-// 	//return $user;	
-// });
+Route::get('/logout', array( 'as' => 'logout' , 'uses' => 'UserController@getLogout'));
