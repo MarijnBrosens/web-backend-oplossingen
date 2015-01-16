@@ -11,10 +11,15 @@
 |
 */
 
+//dashboard
 Route::get('/', array( 'as' => 'dashboard' , 'uses' => 'DashboardController@getDashboard'))->before('auth'); // moet ingelogd zijn
 
+//login
 Route::get('/login', array( 'as' => 'login' , 'uses' => 'UserController@getLogin'))->before('guest'); //indien ingelogd redirect naar dashboard
 
 Route::post('login', array( 'uses' => 'UserController@postLogin'))->before('csrf');
 
 Route::get('/logout', array( 'as' => 'logout' , 'uses' => 'UserController@getLogout'));
+
+//todos
+Route::get('/todos', array( 'as' => 'todos' , 'uses' => 'TodoController@getTodos'))->before('auth'); // moet ingelogd zijn
