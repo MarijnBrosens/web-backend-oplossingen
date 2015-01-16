@@ -13,6 +13,10 @@
 
 Route::get('/', array( 'as' => 'home' , 'uses' => 'HomeController@getHome'));
 
+Route::get('/login', array( 'as' => 'login' , 'uses' => 'LoginController@getLogin'));
+
+Route::post('login', array( 'uses' => 'LoginController@postLogin'));
+
 //2015-01-14 00:00:00
 
 // Route::get('/', function()
