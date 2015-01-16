@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/',function()
-{
-	$users = DB::table('users')->get();
-
-	var_dump($users);
-});
+Route::get('/', array( 'as' => 'home' , 'uses' => 'HomeController@getHome'));
 
 //2015-01-14 00:00:00
 
