@@ -2,13 +2,13 @@
 
 @section('content')
 
-	<h1>Login</h1>
-
 	@foreach ( $errors->all() as $errorMessage )
 
 		<div class="modal error"> {{ $errorMessage }} </div>
 
 	@endforeach
+
+	<h1>Login</h1>
 
 	{{ Form::open( array( 'autocomplete' => 'off' ) ) }}
 	{{ Form::text( 'email' , '' , array( 'placeholder' => 'email' ) ) }}

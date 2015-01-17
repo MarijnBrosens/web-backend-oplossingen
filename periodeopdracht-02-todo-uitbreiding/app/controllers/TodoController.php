@@ -34,26 +34,29 @@ class TodoController extends BaseController {
 
 	public function postAdd()
 	{
-		$input 			= Input::all();
-		$addTodoFields 	= array( 'todoTitle' => 'required', 'todoDetails' => 'required');
-		$validator 		= Validator::make( $input , $addTodoFields );
 		$userId 		= Auth::user()->id;
+		$input 			= Input::all();				
 		$todoTitle 		= Input::get( 'todoTitle' );
 		$todoDetails 	= Input::get( 'todoDetails' );
 
+		$addTodoFields 	= array( 'todoTitle' => 'required', 'todoDetails' => 'required');
+		$validator 		= Validator::make( $input , $addTodoFields );
+
 		if ( $validator->fails() ) 
 		{
-			return Redirect::route( 'addTodo' ) 
+			return Redirect::route( 'add' ) 
 				->withErrors( 'Oeps, de velden die je hebt ingebuld zijn niet correct!' );
-		}
-
-		DB::table( 'todos' )->insert(
+		} 
+		else 
+		{
+			DB::table( 'todos' )->insert(
 		    array(	'todoTitle' 	=> $todoTitle,
 		    		'todoDetails' 	=> $todoDetails,
 		    		'userId'		=> $userId )
-		);
+			);
 
-		return Redirect::route( 'todos' );
+			return Redirect::route( 'todos' );
+		}		
 	}
 
 	public function edit( $id )

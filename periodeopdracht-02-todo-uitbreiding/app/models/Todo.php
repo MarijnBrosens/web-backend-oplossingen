@@ -2,8 +2,6 @@
 
 class Todo extends Eloquent {
 
-
-
 }
 
- ?>
+?>
