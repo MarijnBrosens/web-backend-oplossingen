@@ -105,9 +105,10 @@ i.fa.fa-chevron-down:hover{
 	color: #fff;
 	float: left;
 	margin-right: 1%;
-	width: 30.33%;
+	width: 49%;
 	display:block;
 	margin-bottom: 1%;
+	max-width: 100%;
 }
 
 .dashboard a:hover{

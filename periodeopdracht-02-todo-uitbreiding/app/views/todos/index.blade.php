@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1>Todo's</h1>
+	<h1>Todo</h1>
 	<p>
 		<a href="{{ url('add') }}"><i class="fa fa-plus"></i> Add new todo</a>
 	</p>
