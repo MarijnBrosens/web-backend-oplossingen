@@ -22,29 +22,13 @@ class UserController extends BaseController {
 
 	public function postLogin()
 	{
-		/*
-		$input = Input::all();
-
-		// data van de inputs
-		$loginData = array( 'email' => 'required' , 'password' => 'required');
-
-		// check of gebruikersnaam, password zijn ingevuld
-		$validator = Validator::make( $input , $loginData );
-
-		// error message bij validatie inputs
-		if ( $validator->fails() ) 
-		{
-			// moet allias zijn, niet login.index ( in router gedefinieerd )
-			return Redirect::route( 'login' ) 
-				->withErrors( 'Oeps, je gebruikersnaam en/of paswoord waren niet juist. Probeer opnieuw' );
-		}*/
 
 		$emailPasswordArray = 	array(				
 									'email' 	=> Input::get( 'email' ),
 									'password' 	=> Input::get( 'password' ) 
 								);
 
-		// auth kijkt tabel na 
+		// auth kijkt user na 
 		$auth = Auth::attempt( $emailPasswordArray , false );
 
 		if ( !$auth ) {
@@ -54,7 +38,44 @@ class UserController extends BaseController {
 
 		// moet allias zijn
 		return Redirect::route( 'dashboard' );	
+	}
 
+	public function getRegistrer()
+	{
+		return View::make( 'login.registrer' );
+	}
+
+	public function postRegistrer()
+	{
+		$input 			= Input::all();
+		$registrerFields= array( 'email' => 'required', 'password' => 'required');
+		$validator 		= Validator::make( $input , $registrerFields );
+		$email 			= Input::get( 'email' );
+		$password	 	= Input::get( 'password' );
+
+		// usercheck
+		$rules = array('email' => 'unique:users,email');
+
+		$validator = Validator::make($input, $rules);
+
+		if ($validator->fails()) 
+		{
+		    return Redirect::route( 'registrer' ) 
+						->withErrors( 'Oeps, Er bestaat al een gebruiker met dit emailadres!' );
+		} 
+		else 
+		{
+			$hashedPassword = Hash::make( $password );
+			DB::table( 'users' )->insert(
+			    array(	'email' 	=> $email,
+			    		'password' 	=> $hashedPassword )
+			);
+
+			return Redirect::route( 'login' );
+		}
+
+
+		
 	}
 
 	public function getLogout()

@@ -14,7 +14,6 @@
 	{{ Form::text( 'todoTitle' , '' , array( 'placeholder' => 'Title' ) ) }}
 	{{ Form::textarea('todoDetails', null , array('size' => '30x5', 'placeholder' => 'Details' ) ) }}
 	{{ Form::submit( 'Add new' , array( 'class' => 'btn' ) ) }}
-
 	{{ Form::close() }}
 
 @stop

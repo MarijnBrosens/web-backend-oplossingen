@@ -17,14 +17,12 @@ class TodoController extends BaseController {
 
 	public function getTodos()
 	{
-		// todos van een bepaalde user die niet gedaan zijn en niet gearchiveerd zijn
 		$todos = Auth::user()->todos()->where('isDone', '=', 0)->where('isArchived', '=', 0)->get();
 		return View::make( 'todos.index' , compact( 'todos' ) );
 	}
 
 	public function getDones()
 	{
-		// todos van een bepaalde user die niet gedaan zijn en niet gearchiveerd zijn
 		$dones = Auth::user()->todos()->where('isDone', '=', 1)->where('isArchived', '=', 0)->get();
 		return View::make( 'dones.index' , compact( 'dones' ) );
 	}
@@ -36,7 +34,6 @@ class TodoController extends BaseController {
 
 	public function postAdd()
 	{
-
 		$input 			= Input::all();
 		$addTodoFields 	= array( 'todoTitle' => 'required', 'todoDetails' => 'required');
 		$validator 		= Validator::make( $input , $addTodoFields );
@@ -56,7 +53,7 @@ class TodoController extends BaseController {
 		    		'userId'		=> $userId )
 		);
 
-		return Redirect::route( 'dashboard' );
+		return Redirect::route( 'todos' );
 	}
 
 	public function edit( $id )
@@ -66,31 +63,29 @@ class TodoController extends BaseController {
         {
             $id->isDone = '1';
             $id->save();
+            return Redirect::route( 'todos' );
         }
         else
         {
             $id->isDone = '0';
             $id->save();
-        }
-
-        return Redirect::route( 'dashboard' );
+            return Redirect::route( 'dones' );
+        }        
     }
 
 	public function delete( $id )
     {
-	
-        /*if( $id->isArchived == '0' )
+    	$id->isArchived = '1';
+        $id->save();
+
+    	if( $id->isDone == '0' )
         {
-            $id->isArchived = '1';
-            $id->save();
+            return Redirect::route( 'todos' );
         }
         else
-        {*/
-            $id->isArchived = '0';
-            $id->save();
-        //}
-
-        return Redirect::route( 'dashboard' );
+        {
+            return Redirect::route( 'dones' );
+        } 
     }
 
 
