@@ -4,13 +4,11 @@
 
 	<h1>Login</h1>
 
-	@foreach ( $errors->all() as $errorMessage)
+	@foreach ( $errors->all() as $errorMessage )
 
 		<div class="modal error"> {{ $errorMessage }} </div>
 
 	@endforeach
-
-	<p>login: testATtest.be // pass: test</p>
 
 	{{ Form::open( array( 'autocomplete' => 'off' ) ) }}
 	{{ Form::text( 'email' , '' , array( 'placeholder' => 'email' ) ) }}
