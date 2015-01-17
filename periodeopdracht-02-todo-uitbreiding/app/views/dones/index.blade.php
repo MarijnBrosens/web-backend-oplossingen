@@ -9,7 +9,7 @@
 
 	<ul class="todos">
 
-		@if( $dones )		
+		@if( !$dones->isEmpty() )		
 
 			@foreach ( $dones as $done )
 
@@ -26,7 +26,7 @@
 
 		@else
 
-			<p>Je hebt nog niets gedaan!</p>
+			<h3>Je hebt nog niets gedaan!</h3>
 
 		@endif
 

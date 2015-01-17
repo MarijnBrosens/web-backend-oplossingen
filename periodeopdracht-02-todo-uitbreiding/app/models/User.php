@@ -27,7 +27,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('Todo', 'userId');
 	}
-	
+
 	public function getRememberToken()
 	{
 	    return $this->remember_token;
@@ -42,5 +42,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 	    return 'remember_token';
 	}
-
 }

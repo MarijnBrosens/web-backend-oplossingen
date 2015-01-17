@@ -9,7 +9,7 @@
 
 	<ul class="todos">
 
-		@if( $todos )		
+		@if( !$todos->isEmpty() )		
 
 			@foreach ( $todos as $todo )
 
@@ -26,7 +26,7 @@
 
 		@else
 
-			<p>Er zijn geen todo's</p>
+			<h3>Er zijn geen todo's</h3>
 
 		@endif
 

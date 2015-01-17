@@ -72,10 +72,7 @@ class UserController extends BaseController {
 			);
 
 			return Redirect::route( 'login' );
-		}
-
-
-		
+		}		
 	}
 
 	public function getLogout()

@@ -13,12 +13,10 @@
 					'password' => Hash::make( 'test' )
 
 				)
-
 			);
-
+			
 			DB::table( 'users' )->insert( $users );
 		}
-
 	}
 
 
