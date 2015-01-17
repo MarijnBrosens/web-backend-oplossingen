@@ -17,7 +17,7 @@
 
 						<h2>{{ $todo->todoTitle }}</h2>
 						<p>{{ $todo->todoDetails }}</p>
-						<a href="{{ URL::route( 'edit', $todo->id ) }}"><i class="edit fa fa-chevron-down"></i></a> --- 
+						<a href="{{ URL::route( 'edit', $todo->id ) }}"><i class="edit fa fa-chevron-down"></i></a>  
 						<a href="{{ URL::route( 'delete', $todo->id ) }}"><i class="fa fa-trash"></i></a>
 
 					</li>

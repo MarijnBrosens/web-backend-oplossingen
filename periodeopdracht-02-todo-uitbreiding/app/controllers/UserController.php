@@ -48,30 +48,40 @@ class UserController extends BaseController {
 	public function postRegistrer()
 	{
 		$input 			= Input::all();
-		$registrerFields= array( 'email' => 'required', 'password' => 'required');
-		$validator 		= Validator::make( $input , $registrerFields );
 		$email 			= Input::get( 'email' );
 		$password	 	= Input::get( 'password' );
+		$registrerFields= array( 'email' => 'required|min:3', 'password' => 'required|min:8');
+		$validator 		= Validator::make( $input , $registrerFields );
 
 		// usercheck
 		$rules = array('email' => 'unique:users,email');
 
-		$validator = Validator::make($input, $rules);
+		$userExistsValidator = Validator::make($input, $rules);
 
-		if ($validator->fails()) 
+		if ($userExistsValidator->fails()) 
 		{
 		    return Redirect::route( 'registrer' ) 
 						->withErrors( 'Oeps, Er bestaat al een gebruiker met dit emailadres!' );
 		} 
 		else 
 		{
-			$hashedPassword = Hash::make( $password );
-			DB::table( 'users' )->insert(
-			    array(	'email' 	=> $email,
-			    		'password' 	=> $hashedPassword )
-			);
+			if ($validator->fails()) {
+				// unieke gebruiker, maar fout bij passwoord of email
+				return Redirect::route( 'registrer' ) 
+						->withErrors( $validator );
+				
+			} 
+			else 
+			{
+				$hashedPassword = Hash::make( $password );
+				DB::table( 'users' )->insert(
+				    array(	'email' 	=> $email,
+				    		'password' 	=> $hashedPassword )
+				);
 
-			return Redirect::route( 'login' );
+				return Redirect::route( 'login' );
+			}
+			
 		}		
 	}
 

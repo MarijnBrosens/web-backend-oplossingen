@@ -60,7 +60,7 @@ nav li:last-child{
 
 .container{
 	margin-left: 130px;
-	padding: 50px;
+	padding: 50px 80px;
 }
 
 i.fa.fa-trash:hover{
@@ -73,13 +73,12 @@ i.fa.fa-trash:hover{
 .error{
 	color: #b94a48;
 	background-color: #f2dede;
-	border: 1px solid #eed3d7;
 }
 
 .modal {
-	margin: 5px 0px;
-	padding: 5px;
-	border-radius: 5px;
+	padding: 30px;
+	width: 700px;
+	box-sizing: border-box;
 } 
 
 .dashboard a,
@@ -118,10 +117,11 @@ input[type="password"],
 input[type="text"]{
 	box-sizing: border-box;
 	display: block;
-	border:1px solid #ddd;
-	padding:30px;
+	border: none;
+	border-bottom: 1px solid #F2F2F2;
+	padding: 30px;
 	background: #fff;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	width: 100%;
 }
 
@@ -141,4 +141,8 @@ input.btn:hover{
 
 li>p{
 	color:#999;
+}
+
+.edit{
+	margin-right: 30px;
 }
