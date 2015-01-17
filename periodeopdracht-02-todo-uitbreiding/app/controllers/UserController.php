@@ -50,46 +50,32 @@ class UserController extends BaseController {
 		$input 			= Input::all();
 		$email 			= Input::get( 'email' );
 		$password	 	= Input::get( 'password' );
-		$registrerFields= array( 'email' => 'required|min:3', 'password' => 'required|min:8');
+		$registrerFields= array( 'email' => 'required|email|unique:users', 'password' => 'required|min:8');
 		$validator 		= Validator::make( $input , $registrerFields );
 
-		// usercheck
-		$rules = array('email' => 'unique:users,email');
-
-		$userExistsValidator = Validator::make($input, $rules);
-
-		if ($userExistsValidator->fails()) 
-		{
-		    return Redirect::route( 'registrer' ) 
-						->withErrors( 'Oeps, Er bestaat al een gebruiker met dit emailadres!' );
+		if ($validator->fails()) {
+			return Redirect::route( 'registrer' ) 
+					->withErrors( $validator );
+			
 		} 
 		else 
 		{
-			if ($validator->fails()) {
-				// unieke gebruiker, maar fout bij passwoord of email
-				return Redirect::route( 'registrer' ) 
-						->withErrors( $validator );
-				
-			} 
-			else 
-			{
-				$hashedPassword = Hash::make( $password );
-				DB::table( 'users' )->insert(
-				    array(	'email' 	=> $email,
-				    		'password' 	=> $hashedPassword )
-				);
-
-				return Redirect::route( 'login' );
-			}
+			$hashedPassword = Hash::make( $password );
 			
-		}		
+			DB::table( 'users' )->insert(
+			    array(	'email' 	=> $email,
+			    		'password' 	=> $hashedPassword )
+			);
+
+			return Redirect::route( 'login' );
+		}
 	}
 
 	public function getLogout()
 	{
 		Auth::logout();
 
-		return Redirect::route('login')
+		return Redirect::route( 'login' )
 			->withErrors( 'Je bent succesvol uitgelogd' );
 	}
 
