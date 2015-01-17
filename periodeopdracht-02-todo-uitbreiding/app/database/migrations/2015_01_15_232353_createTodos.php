@@ -21,6 +21,7 @@ class CreateTodos extends Migration {
 			$table->string('todoDetails');
 			$table->boolean('isDone');
 			$table->boolean('isArchived');
+			$table->timestamps();
 		});
 	}
 

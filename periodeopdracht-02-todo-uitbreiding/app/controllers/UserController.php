@@ -39,9 +39,10 @@ class UserController extends BaseController {
 				->withErrors( 'Oeps, je gebruikersnaam en/of paswoord waren niet juist. Probeer opnieuw' );
 		}*/
 
-		$emailPasswordArray = array(				
-								'email' 	=> Input::get( 'email' ),
-								'password' 	=> Input::get( 'password' ) );
+		$emailPasswordArray = 	array(				
+									'email' 	=> Input::get( 'email' ),
+									'password' 	=> Input::get( 'password' ) 
+								);
 
 		// auth kijkt tabel na 
 		$auth = Auth::attempt( $emailPasswordArray , false );

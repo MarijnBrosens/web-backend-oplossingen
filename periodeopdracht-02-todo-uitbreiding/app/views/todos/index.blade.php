@@ -4,7 +4,7 @@
 
 	<h1>Todo's</h1>
 	<p>
-		<a href="{{ url('addTodo') }}"><i class="fa fa-plus"></i> Add new todo</a>
+		<a href="{{ url('add') }}"><i class="fa fa-plus"></i> Add new todo</a>
 	</p>
 
 	<ul class="todos">
@@ -17,8 +17,8 @@
 
 						{{ $todo->todoTitle }}
 						{{ $todo->todoDetails }}
-						<a href="{{ url('/done') }}"><i class="fa fa-chevron-down"></i></a>
-						<a href="{{ url('/archive') }}"><i class="fa fa-trash"></i></a>
+						<a href="{{ URL::route( 'edit', $todo->id ) }}"><i class="fa fa-chevron-down"></i></a>
+						<a href="{{ URL::route( 'delete', $todo->id ) }}"><i class="fa fa-trash"></i></a>
 
 					</li>
 
@@ -27,7 +27,6 @@
 		@else
 
 			<p>Er zijn geen todo's</p>
-
 
 		@endif
 

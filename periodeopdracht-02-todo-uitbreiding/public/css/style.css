@@ -1,6 +1,6 @@
 body {
 	color: #292E34;
-	background: #f5f5f5;
+	background: #ECEEF1;
 	padding: 0;
 	margin:0;
 	font-family: 'Roboto', sans-serif;
@@ -25,8 +25,9 @@ nav{
 	bottom:0;
 	width: 100px;
 }
+
 nav a{
-	color: #fff;
+	color:rgba(255, 255, 255, 0.3);
 	padding-top: 20px;
 	display: block;
 	text-align: center;
@@ -35,6 +36,7 @@ nav a{
 }
 
 nav a:hover{
+	transition:1s;
 	color: #86FF93;
 	background:rgba(255,255,255,.1);
 	border-bottom: 1px solid #86FF93;
@@ -43,7 +45,7 @@ nav a:hover{
 nav i{
 	display: block;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 nav li:last-child{
@@ -57,11 +59,17 @@ nav li:last-child{
 	padding: 50px;
 }
 
-i.fa.fa-trash{
-	color: #b94a48;
+.homeIcon {
+	background:rgba(0,0,0,.1);
+	color: #86FF93;
 }
 
-
+i.fa.fa-trash:hover{
+	color: #b94a48;
+}
+i.fa.fa-chevron-down:hover{
+	color: #86FF93;
+}
 
 .error{
 	color: #b94a48;
@@ -78,18 +86,55 @@ i.fa.fa-trash{
 .dashboard a,
 .todos>li{
 	background: #fff;
-	padding: 1%;
-	margin-bottom: 10px;
+	padding: 30px;
+	border-bottom: 1px solid #F2F2F2;
+	width: 100%;
+	max-width: 700px;
+	box-sizing: border-box;
 }
 
 .dashboard a{
+	background: #292E34;
+	padding: 1%;
+	color: #fff;
 	float: left;
 	margin-right: 1%;
 	width: 30.33%;
 	display:block;
+	margin-bottom: 1%;
 }
 
 .dashboard a:hover{
-	background:rgba(255,255,255,.9);
-	color: #555;
+	color: #86FF93;
+}
+
+form{
+	width: 100%;
+	max-width: 700px;
+}
+
+textarea,
+input[type="password"],
+input[type="text"]{
+	box-sizing: border-box;
+	display: block;
+	border:1px solid #ddd;
+	padding:30px;
+	background: #fff;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+input.btn {
+	background:#292E34;
+	padding:20px;
+	font-size: 125%;
+	color:#fff;
+	border:none;
+	width: 100%;
+}
+
+input.btn:hover{
+	color: #86FF93;
+	cursor: pointer;
 }
