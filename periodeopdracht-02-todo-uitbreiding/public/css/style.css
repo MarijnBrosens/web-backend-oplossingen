@@ -29,23 +29,21 @@ nav{
 	top: 0;
 	left: 0;
 	bottom:0;
-	width: 100px;
+	width: 130px;
 }
 
 nav a{
 	color:rgba(255, 255, 255, 0.3);
-	padding-top: 20px;
+	padding-top: 40px;
 	display: block;
 	text-align: center;
-	height: 70px;
+	height: 90px;
 	border-bottom: 1px solid rgba(255,255,255,.05);
 }
 
 nav a:hover{
 	transition:1s;
 	color: #86FF93;
-	background:rgba(255,255,255,.1);
-	border-bottom: 1px solid #86FF93;
 }
 
 nav i{
@@ -61,19 +59,14 @@ nav li:last-child{
 }
 
 .container{
-	margin-left: 100px;
+	margin-left: 130px;
 	padding: 50px;
-}
-
-.homeIcon {
-	background:rgba(0,0,0,.1);
-	color: #86FF93;
 }
 
 i.fa.fa-trash:hover{
 	color: #b94a48;
 }
-i.fa.fa-chevron-down:hover{
+.edit:hover{
 	color: #86FF93;
 }
 

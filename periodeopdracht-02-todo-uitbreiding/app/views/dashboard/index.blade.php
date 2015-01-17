@@ -10,4 +10,5 @@
 	    <li><a href="{{ url('dones') }}"><i class="fa fa-chevron-down"></i> Done</a></li>
 	    <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
 	</ul>
+	
 @stop
