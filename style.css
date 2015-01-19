@@ -175,3 +175,8 @@ article.actief{
 article.onactief{
 	background:Tomato;
 }
+
+.regularExpression > span{
+	color:red;
+	font-weight: bold;
+}
