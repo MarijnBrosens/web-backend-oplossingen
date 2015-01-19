@@ -43,7 +43,7 @@
 				</li>
 				<li>
 					<label for="string">String</label>
-					<textarea type="text" name="string"><?= $string ?></textarea>
+					<textarea type="text" name="string" rows="5" cols="100"><?= $string ?></textarea>
 				</li>
 			</ul>
 			<input type="submit" name="submit">
@@ -55,7 +55,35 @@
 				Resultaat:  <?= $pregReplace ?>
 			<?php endif ?>
 
-		</div>		
+		</div>	
+
+		<h1>Deel2</h1>
+		<hr>
+		<h2>Match alle letters tussen a en d, en u en z (hoofdletters inclusief)</h2>
+		<p>String: Memory can change the shape of a room; it can change the color of a car. And memories can be distorted. They're just an interpretation, they're not a record, and they're irrelevant if you have the facts.</p>
+		<h4>[a-d|A-D|u|U|z|Z]</h4>
+		<p>Resultaat: Memory ##n #h#nge the sh#pe of # room; it ##n #h#nge the #olor of # ##r. #n# memories ##n #e #istorte#. They're j#st #n interpret#tion, they're not # re#or#, #n# they're irrelev#nt if yo# h#ve the f##ts.</p>	
+
+		<hr>
+
+		<h2>Match zowel colour als color</h2>
+		<p>String: Zowel colour als color zijn correct Engels.</p>
+		<h4>colour|color</h4>
+		<p>Resultaat: Zowel # als # zijn correct Engels.<p>
+
+		<hr>
+
+		<h2>Match enkel de getallen die een 1 als duizendtal hebben.</h2>
+		<p>Match enkel de getallen die een 1 als duizendtal hebben.</p>
+		<h4>1[\w]+</h4>
+		<p>Resultaat: # # 9784 # 0231 # 8745</p>
+
+		<hr>
+
+		<h2>Match alle data zodat er enkel een reeks "en" overblijft.</h2>
+		<p>String: 24/07/1978 en 24-07-1978 en 24.07.1978</p>
+		<h4>[^en]</h4>
+		<p>Resultaat: ###########en############en###########</p>
 
     </body>
 </html>
