@@ -1,0 +1,5 @@
+RewriteEngine On
+
+#RewriteRule ^original.php$ redirect.php #dit staat in comment en is het eerste deel van deel1
+
+DirectoryIndex original.php
