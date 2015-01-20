@@ -1,4 +1,4 @@
-Ik heb mijn applicatie ook op een server geplaatst: 
+Live demo: 
 
 
 <a href="http://marijnbrosens.realityhost.be/laraveltodo/public/">
