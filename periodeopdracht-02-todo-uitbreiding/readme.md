@@ -1,3 +1,23 @@
+Ik heb mijn applicatie ook op een server geplaatst: 
+
+
+<a href="http://marijnbrosens.realityhost.be/laraveltodo/public/">
+	http://marijnbrosens.realityhost.be/laraveltodo/public/
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
